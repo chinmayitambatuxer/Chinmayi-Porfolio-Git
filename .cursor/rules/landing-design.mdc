@@ -1,0 +1,56 @@
+---
+description: Figma landing page design system (PORTFOLIO file, node 143:267)
+globs: src/components/landing/**,src/components/home/CaseStudyCard.tsx,src/app/globals.css
+alwaysApply: false
+---
+
+# Landing Page Design System
+
+Source: Figma `PORTFOLIO` (`2O3YDs4FfV1ZEwTuinmTpX`), node `143:267`.
+
+## Typography
+
+- **Headings**: Bricolage Grotesque (`--font-bricolage`)
+  - Hero/display: ~72px, bold, -0.03em tracking
+  - Section titles: ~48px (`lp-section-title`)
+  - Card titles: ~36px (`lp-card-title`)
+- **Body & nav**: Inter (`--font-inter`)
+  - Body: 18px, line-height 1.7 (`lp-body`)
+  - Small body: 16px (`lp-body-sm`)
+  - Category labels: 14px, bold, uppercase, 0.1em tracking (`lp-category`)
+
+## Colors
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--lp-ink` | `#191d21` | Primary text, buttons |
+| `--lp-body` | `#3f444a` | Body copy, nav links |
+| `--lp-muted` | `#6b7280` | Meta labels |
+| `--lp-surface` | `#f9f9f9` | Section backgrounds |
+| `--lp-quote` | `#fcfaf9` | Quote/contact blocks |
+| `--lp-border` | `#ebebeb` | Dividers, card borders |
+| `--lp-accent-hmi` | `#7b7027` | Automotive HMI cards |
+| `--lp-accent-health` | `#366b74` | Healthcare / travel cards |
+| `--lp-accent-enterprise` | `#a54711` | Enterprise cards |
+
+## Components
+
+- **Nav**: Floating pill (`lp-nav-pill`) — white ~70% opacity, blur, shadow, rounded bottom 24px
+- **Hero**: Gradient shell (`lp-hero-shell`) — warm gradient, 48px radius; keep text-left / photo-right layout
+- **Case study cards**: Borderless; `rounded-3xl` image; colored uppercase category; title + description; optional metrics/tags below
+- **About**: `#f9f9f9` section bg; rotated profile image (-3deg); awards in `lp-quote-block`
+- **Contact**: `#fcfaf9` bg; white rounded-2xl link cards
+- **Footer**: Minimal — name, role, social links, copyright
+
+## Motion (preserve)
+
+- `FadeIn` on hero elements
+- `Reveal` on section blocks
+- `ScrollProgress` at page top
+- Card image `group-hover:scale-[1.03]` on case study cards
+
+## Content rules
+
+- Keep all existing copy from `src/data/site.ts` and case study data
+- Do not change hero layout structure — only apply Figma styling
+- Case study pages use separate `.cs-*` styles (DM Sans); landing uses `.lp-*` and `.landing-page` scope
