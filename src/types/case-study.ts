@@ -10,6 +10,19 @@ export type Metric = {
   description?: string;
 };
 
+/** Cell value for benchmark matrix tables — true/false for yes/no icons. */
+export type BenchmarkValue = boolean | null | "-" | string;
+
+export type BenchmarkRow = {
+  label: string;
+  values: BenchmarkValue[];
+};
+
+export type BenchmarkData = {
+  brands: string[];
+  rows: BenchmarkRow[];
+};
+
 export type ReflectionItem = {
   number: string;
   title: string;
@@ -62,7 +75,7 @@ export type CaseStudySection =
       alt?: string;
       width?: number;
       height?: number;
-      layout?: "full" | "contained" | "breakout";
+      layout?: "full" | "contained" | "breakout" | "phone";
       artifact?: "empathy-map";
     }
   | {
@@ -78,8 +91,27 @@ export type CaseStudySection =
         bullets?: string[];
         width?: number;
         height?: number;
+        wide?: boolean;
       }[];
       columns?: 2 | 3;
+      device?: "phone";
+    }
+  | {
+      type: "flow";
+      id: string;
+      navLabel?: string;
+      title?: string;
+      subtitle?: string;
+      steps: {
+        step: string;
+        title: string;
+        content: string;
+        bullets?: string[];
+        src: string;
+        alt: string;
+        width?: number;
+        height?: number;
+      }[];
     }
   | {
       type: "split";
@@ -89,8 +121,9 @@ export type CaseStudySection =
       label?: string;
       content: string;
       bullets?: string[];
-      image?: { src: string; alt: string };
+      image?: { src: string; alt: string; width?: number; height?: number };
       artifact?: "connected-cockpit";
+      layout?: "default" | "profile";
       reverse?: boolean;
     }
   | {
@@ -99,9 +132,10 @@ export type CaseStudySection =
       navLabel?: string;
       title: string;
       subtitle?: string;
-      layout?: "default" | "cards" | "styled" | "insights" | "competitive";
+      layout?: "default" | "cards" | "styled" | "insights" | "competitive" | "benchmark";
       headers: string[];
       rows: string[][];
+      benchmark?: BenchmarkData;
       takeaways?: {
         keyTakeaway: string;
         opportunity: string;
@@ -146,7 +180,7 @@ export type CaseStudySection =
       context: string;
       rationale: string;
       options?: { label: string; description: string }[];
-      image?: { src: string; alt: string };
+      image?: { src: string; alt: string; device?: "phone" };
     }
   | {
       type: "comparison";
@@ -180,7 +214,7 @@ export type CaseStudySection =
       navLabel?: string;
       title: string;
       subtitle?: string;
-      layout?: "list" | "cards" | "manifest";
+      layout?: "list" | "cards" | "manifest" | "hierarchy" | "future";
       items: { title: string; description: string; bullets?: string[] }[];
       image?: { src: string; alt: string };
     }
@@ -240,6 +274,7 @@ export type CaseStudy = {
   summary: string;
   tags: string[];
   heroImage: string;
+  heroLayout?: "phone";
   theme: CaseStudyTheme;
   domain: string;
   role: string;

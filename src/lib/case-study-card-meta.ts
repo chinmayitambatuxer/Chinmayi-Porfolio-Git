@@ -10,6 +10,7 @@ const domainMeta: Record<string, CardMeta> = {
   Healthcare: { label: "Healthcare", color: "#366b74" },
   "Travel & Hospitality": { label: "Mobile Application", color: "#366b74" },
   Enterprise: { label: "Enterprise UX", color: "#a54711" },
+  Productivity: { label: "Mobile Application", color: "#3B5BA5" },
 };
 
 export function getCaseStudyCardMeta(study: CaseStudy): CardMeta {

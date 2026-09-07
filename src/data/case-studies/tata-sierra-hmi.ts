@@ -27,13 +27,13 @@ export const tataSierraHmi: CaseStudy = {
   role: "Lead UX Designer (Passenger Display & Infotainment Experience)",
   team: "Product, engineering, QA, and brand stakeholders",
   timeline: "1 year",
-  platform: "Android Automotive — dual display cockpit",
+  platform: "Android Automotive — dual-display cockpit",
   overview:
     "Tata Sierra introduced a premium dual-display cockpit where the central infotainment and dedicated passenger display had to behave as one intelligent system — sharing audio, safety constraints, and real-time state while serving two occupants with different priorities.",
   contribution: [
     "Passenger Display experience",
     "Multi-display interaction model",
-    "Audio concurrency behavior",
+    "Audio concurrency behaviour",
     "JBL listening modes & Relax Mode",
     "FOTA journey and boot-up strategy",
     "Quick Access Drawer (QAD)",
@@ -41,7 +41,7 @@ export const tataSierraHmi: CaseStudy = {
     "UX specifications for engineering handoff",
   ],
   metrics: [
-    { value: "2", label: "Connected displays" },
+    { value: "3", label: "Connected displays" },
     { value: "1 yr", label: "Project duration" },
     { value: "E2E", label: "UX ownership" },
   ],
@@ -401,7 +401,7 @@ export const tataSierraHmi: CaseStudy = {
       headers: ["User Group", "Age", "Driving Pattern", "Primary Needs"],
       rows: [
         ["Daily Commuters", "28–45", "City + Highway", "Navigation, calls, media"],
-        ["Long-distance Travelers", "30–55", "Weekend trips", "Comfort, entertainment"],
+        ["Long-distance Travellers", "30–55", "Weekend trips", "Comfort, entertainment"],
         ["Family Users", "35–50", "Multi-passenger travel", "Shared media, children's entertainment"],
       ],
     },
@@ -423,7 +423,7 @@ export const tataSierraHmi: CaseStudy = {
         },
         {
           title: "Audio ownership was unclear",
-          finding: "Simultaneous controls confused who owned the output.",
+          finding: "Simultaneous controls made it unclear who owned the output.",
           implication: "Define predictable concurrency rules with clear feedback.",
         },
         {
@@ -477,8 +477,6 @@ export const tataSierraHmi: CaseStudy = {
       navLabel: "Systems",
       phase: "Phase 4 — System Architecture",
       title: "From insights to behaviour matrices",
-      description:
-        "Defining how the cockpit behaves across vehicle states, users, and shared audio resources.",
     },
     {
       type: "quote",
@@ -494,6 +492,8 @@ export const tataSierraHmi: CaseStudy = {
         "Every action on one display could influence the other — shared resources tied both experiences together.",
       src: img("system-architecture.png"),
       alt: "Tata Sierra HMI system architecture diagram",
+      width: 1024,
+      height: 583,
     },
     {
       type: "image",
@@ -552,6 +552,8 @@ export const tataSierraHmi: CaseStudy = {
       image: {
         src: img("concurrency-decision-tree.png"),
         alt: "Concurrency decision tree",
+        width: 2048,
+        height: 2686,
       },
       reverse: true,
     },
@@ -592,6 +594,9 @@ export const tataSierraHmi: CaseStudy = {
           src: img("audio-concurrency-flow.png"),
           alt: "Passenger play action flow",
           caption: "Play action priority checks",
+          width: 1442,
+          height: 2104,
+          wide: true,
         },
       ],
     },
@@ -622,7 +627,7 @@ export const tataSierraHmi: CaseStudy = {
             "Prioritizes driver safety with uninterrupted driver communication.",
             "Adapts contextually based on the active system state.",
             'Reduces cognitive load through a clear "Accept on Phone" action.',
-            "Ensures a seamless multi-display experience with predictable system behavior.",
+            "Ensures a seamless multi-display experience with predictable system behaviour.",
           ],
         },
         {

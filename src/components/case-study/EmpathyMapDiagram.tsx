@@ -155,21 +155,21 @@ const quadrantIcons: Record<QuadrantKey, ComponentType<{ color: string }>> = {
 function DriverAvatar({ color }: { color: string }) {
   return (
     <svg viewBox="0 0 80 80" className="h-16 w-16 md:h-20 md:w-20" fill="none" aria-hidden>
-      <circle cx="40" cy="24" r="10" stroke={color} strokeWidth="1.5" />
+      <circle cx="40" cy="14" r="7" stroke={color} strokeWidth="1.5" />
       <path
-        d="M22 58c2-10 8-14 18-14s16 4 18 14"
+        d="M25 38c0-7.5 6.7-12 15-12s15 4.5 15 12"
         stroke={color}
         strokeWidth="1.5"
         strokeLinecap="round"
       />
+      <circle cx="40" cy="56" r="11" stroke={color} strokeWidth="1.5" />
+      <circle cx="40" cy="56" r="3" stroke={color} strokeWidth="1.5" />
       <path
-        d="M14 44h52M14 44c0-4 3-8 8-8h36c5 0 8 4 8 8"
+        d="M29 56h8M51 56h-8M40 67v-8"
         stroke={color}
         strokeWidth="1.5"
         strokeLinecap="round"
-        strokeLinejoin="round"
       />
-      <circle cx="40" cy="44" r="5" stroke={color} strokeWidth="1.5" />
     </svg>
   );
 }
@@ -177,15 +177,48 @@ function DriverAvatar({ color }: { color: string }) {
 function PassengerAvatar({ color }: { color: string }) {
   return (
     <svg viewBox="0 0 80 80" className="h-16 w-16 md:h-20 md:w-20" fill="none" aria-hidden>
-      <circle cx="40" cy="24" r="10" stroke={color} strokeWidth="1.5" />
+      <circle cx="40" cy="14" r="7" stroke={color} strokeWidth="1.5" />
       <path
-        d="M22 58c2-10 8-14 18-14s16 4 18 14"
+        d="M30 16a10 10 0 0 1 20 0"
         stroke={color}
         strokeWidth="1.5"
         strokeLinecap="round"
       />
+      <rect
+        x="27"
+        y="13"
+        width="5"
+        height="8.5"
+        rx="2.5"
+        stroke={color}
+        strokeWidth="1.5"
+      />
+      <rect
+        x="48"
+        y="13"
+        width="5"
+        height="8.5"
+        rx="2.5"
+        stroke={color}
+        strokeWidth="1.5"
+      />
       <path
-        d="M18 50h44c2 0 4 2 4 4v4H14v-4c0-2 2-4 4-4Z"
+        d="M25 38c0-7.5 6.7-12 15-12s15 4.5 15 12"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <rect
+        x="26"
+        y="45"
+        width="28"
+        height="21"
+        rx="4"
+        stroke={color}
+        strokeWidth="1.5"
+      />
+      <path
+        d="M37.5 51.5 44 55.5l-6.5 4z"
         stroke={color}
         strokeWidth="1.5"
         strokeLinejoin="round"

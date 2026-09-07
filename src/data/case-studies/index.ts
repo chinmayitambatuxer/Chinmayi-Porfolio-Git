@@ -4,14 +4,14 @@ import { tataSierraHmi } from "./tata-sierra-hmi";
 import { inVehicleExperience } from "./in-vehicle-experience";
 import { sdohHealthPlatform } from "./sdoh-health-platform";
 import { airportTravelExperience } from "./airport-travel-experience";
-import { clientDemoPortal } from "./client-demo-portal";
+import { workSpace } from "./work-space";
 
 export const caseStudies: CaseStudy[] = [
   tataSierraHmi,
   inVehicleExperience,
   sdohHealthPlatform,
   airportTravelExperience,
-  clientDemoPortal,
+  workSpace,
 ];
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {

@@ -12,9 +12,14 @@ import { EmpathyMapDiagram } from "./EmpathyMapDiagram";
 import { ImageTakeaways } from "./ImageTakeaways";
 import { PrincipleManifest } from "./PrincipleManifest";
 import { PrincipleCards } from "./PrincipleCards";
+import { PrincipleHierarchy } from "./PrincipleHierarchy";
+import { FutureOpportunities } from "./FutureOpportunities";
+import { PersonaSplit } from "./PersonaSplit";
+import { PhoneShowcase } from "./PhoneShowcase";
 import { StakeholderCards } from "./StakeholderCards";
 import { ThemedDataTable } from "./ThemedDataTable";
 import { CompetitiveAnalysisTable } from "./CompetitiveAnalysisTable";
+import { EvBenchmarkTable } from "./EvBenchmarkTable";
 
 type SectionRendererProps = {
   section: CaseStudySection;
@@ -149,10 +154,12 @@ export function SectionRenderer({
       );
 
     case "image": {
-      const imageWidth = section.width ?? 1400;
-      const imageHeight = section.height ?? 900;
-      const imageSizes =
-        section.layout === "full"
+      const isPhone = section.layout === "phone";
+      const imageWidth = isPhone ? 390 : (section.width ?? 1400);
+      const imageHeight = isPhone ? 844 : (section.height ?? 900);
+      const imageSizes = isPhone
+        ? "280px"
+        : section.layout === "full"
           ? "(max-width: 72rem) 100vw, 72rem"
           : "(max-width: 900px) 100vw, 900px";
 
@@ -167,7 +174,11 @@ export function SectionRenderer({
           alt={section.alt ?? ""}
           width={imageWidth}
           height={imageHeight}
-          className="block h-auto w-full"
+          className={
+            isPhone
+              ? "mx-auto block h-auto w-full max-w-[260px] md:max-w-[280px]"
+              : "block h-auto w-full"
+          }
           sizes={imageSizes}
         />
       ) : null;
@@ -177,32 +188,47 @@ export function SectionRenderer({
       return (
         <section id={section.id} className="scroll-mt-28 py-8 md:py-12">
           <Reveal delay={delay}>
-            {section.title && (
-              <h2 className="cs-chapter-title mb-8 max-w-3xl">{section.title}</h2>
-            )}
-            {figureContent && (
-              <figure>
-                {figureContent}
-                {(section.caption || section.bullets) && (
-                  <figcaption className="mt-4">
-                    {section.caption && (
-                      <p className="cs-body-sm">{section.caption}</p>
-                    )}
-                    {section.bullets && section.bullets.length > 0 && (
-                      <ul
-                        className={`cs-body-sm space-y-2 ${section.caption ? "mt-4" : ""}`}
-                      >
-                        {section.bullets.map((bullet) => (
-                          <li key={bullet} className="flex gap-3">
-                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-ink/30" />
-                            {bullet}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </figcaption>
+            {isPhone && section.src ? (
+              <PhoneShowcase
+                title={section.title}
+                caption={section.caption}
+                bullets={section.bullets}
+                src={section.src}
+                alt={section.alt ?? ""}
+                width={imageWidth}
+                height={imageHeight}
+                accent={accent}
+              />
+            ) : (
+              <>
+                {section.title && (
+                  <h2 className="cs-chapter-title mb-8 max-w-3xl">{section.title}</h2>
                 )}
-              </figure>
+                {figureContent && (
+                  <figure>
+                    {figureContent}
+                    {(section.caption || section.bullets) && (
+                      <figcaption className="mt-4">
+                        {section.caption && (
+                          <p className="cs-body-sm">{section.caption}</p>
+                        )}
+                        {section.bullets && section.bullets.length > 0 && (
+                          <ul
+                            className={`cs-body-sm space-y-2 ${section.caption ? "mt-4" : ""}`}
+                          >
+                            {section.bullets.map((bullet) => (
+                              <li key={bullet} className="flex gap-3">
+                                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-ink/30" />
+                                {bullet}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </figcaption>
+                    )}
+                  </figure>
+                )}
+              </>
             )}
             {section.takeaways && (
               <ImageTakeaways
@@ -228,10 +254,27 @@ export function SectionRenderer({
               <p className="cs-body-sm mb-8 max-w-2xl">{section.subtitle}</p>
             )}
             <div
-              className={`grid gap-8 ${section.columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}
+              className={
+                section.device === "phone"
+                  ? "flex flex-wrap justify-center gap-8 md:gap-10"
+                  : `grid gap-8 ${section.columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`
+              }
             >
               {section.images.map((image) => (
-                <figure key={image.src} className="flex h-full flex-col">
+                <figure
+                  key={image.src}
+                  className={`flex h-full flex-col ${
+                    section.device === "phone"
+                      ? "w-full max-w-[260px] md:max-w-[280px]"
+                      : image.wide
+                        ? `mx-auto w-full max-w-3xl ${
+                            section.columns === 3
+                              ? "md:col-span-3"
+                              : "md:col-span-2"
+                          }`
+                        : ""
+                  }`}
+                >
                   <Image
                     src={image.src}
                     alt={image.alt}
@@ -274,37 +317,119 @@ export function SectionRenderer({
         </section>
       );
 
+    case "flow":
+      return (
+        <section id={section.id} className="scroll-mt-28 py-12 md:py-16">
+          <Reveal delay={delay}>
+            {section.title && (
+              <h2 className="cs-chapter-title max-w-3xl">{section.title}</h2>
+            )}
+            {section.subtitle && (
+              <p className="cs-body-sm mt-4 max-w-2xl">{section.subtitle}</p>
+            )}
+          </Reveal>
+
+          <div className="mt-12 space-y-16 md:mt-16 md:space-y-24">
+            {section.steps.map((step, stepIndex) => {
+              const imageFirst = stepIndex % 2 === 0;
+
+              return (
+                <Reveal key={step.src} delay={delay}>
+                  <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
+                    <div
+                      className={`lg:col-span-7 ${
+                        imageFirst ? "lg:order-1" : "lg:order-2"
+                      }`}
+                    >
+                      <Image
+                        src={step.src}
+                        alt={step.alt}
+                        width={step.width ?? 1024}
+                        height={step.height ?? 636}
+                        className="block h-auto w-full"
+                        sizes="(max-width: 1024px) 100vw, 580px"
+                      />
+                    </div>
+                    <div
+                      className={`lg:col-span-5 ${
+                        imageFirst ? "lg:order-2" : "lg:order-1"
+                      }`}
+                    >
+                      <p className="cs-meta-label" style={{ color: accent }}>
+                        Step {step.step}
+                      </p>
+                      <h3 className="mt-3 text-xl font-bold text-ink md:text-2xl">
+                        {step.title}
+                      </h3>
+                      <p className="cs-body-sm mt-4">{step.content}</p>
+                      {step.bullets && step.bullets.length > 0 && (
+                        <ul className="mt-5 space-y-3">
+                          {step.bullets.map((bullet) => (
+                            <li
+                              key={bullet}
+                              className="cs-body-sm flex gap-3 text-ink-muted"
+                            >
+                              <span
+                                className="mt-2.5 h-1 w-1 shrink-0 rounded-full"
+                                style={{ backgroundColor: accent }}
+                                aria-hidden
+                              />
+                              {bullet}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </section>
+      );
+
     case "split":
       return (
         <section id={section.id} className="scroll-mt-28 py-12 md:py-16">
           <Reveal delay={delay}>
-            <div
-              className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-14 ${section.reverse ? "lg:[&>*:first-child]:order-2" : ""}`}
-            >
-              <div>
-                <h2 className="cs-chapter-title">{section.title}</h2>
-                {section.label && (
-                  <p className="cs-meta-label mt-6" style={{ color: accent }}>
-                    {section.label}
-                  </p>
+            {section.layout === "profile" && section.image ? (
+              <PersonaSplit
+                title={section.title}
+                label={section.label}
+                content={section.content}
+                bullets={section.bullets}
+                image={section.image}
+                theme={theme}
+              />
+            ) : (
+              <div
+                className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-14 ${section.reverse ? "lg:[&>*:first-child]:order-2" : ""}`}
+              >
+                <div>
+                  <h2 className="cs-chapter-title">{section.title}</h2>
+                  {section.label && (
+                    <p className="cs-meta-label mt-6" style={{ color: accent }}>
+                      {section.label}
+                    </p>
+                  )}
+                  <Prose>{section.content}</Prose>
+                  {section.bullets && <Bullets items={section.bullets} />}
+                </div>
+                {section.artifact === "connected-cockpit" ? (
+                  <ConnectedCockpitDiagram theme={theme} />
+                ) : (
+                  section.image && (
+                    <Image
+                      src={section.image.src}
+                      alt={section.image.alt}
+                      width={section.image.width ?? 700}
+                      height={section.image.height ?? 500}
+                      className="block h-auto w-full"
+                    />
+                  )
                 )}
-                <Prose>{section.content}</Prose>
-                {section.bullets && <Bullets items={section.bullets} />}
               </div>
-              {section.artifact === "connected-cockpit" ? (
-                <ConnectedCockpitDiagram theme={theme} />
-              ) : (
-                section.image && (
-                  <Image
-                    src={section.image.src}
-                    alt={section.image.alt}
-                    width={700}
-                    height={500}
-                    className="block h-auto w-full"
-                  />
-                )
-              )}
-            </div>
+            )}
           </Reveal>
         </section>
       );
@@ -341,32 +466,65 @@ export function SectionRenderer({
         </section>
       );
 
-    case "decision":
+    case "decision": {
+      const imageFirst = Number(section.number) % 2 === 1;
+      const isPhone = section.image?.device === "phone";
+
+      const decisionCopy = (
+        <>
+          <p className="cs-meta-label" style={{ color: accent }}>
+            Decision {section.number}
+          </p>
+          <h2 className="cs-chapter-title mt-4 max-w-3xl">{section.title}</h2>
+          <Prose>{section.context}</Prose>
+          <p className="cs-body mt-8 max-w-[var(--cs-text)] font-medium text-ink">
+            {section.rationale}
+          </p>
+        </>
+      );
+
+      if (!section.image) {
+        return (
+          <section id={section.id} className="scroll-mt-28 py-12 md:py-16">
+            <Reveal delay={delay}>{decisionCopy}</Reveal>
+          </section>
+        );
+      }
+
       return (
         <section id={section.id} className="scroll-mt-28 py-12 md:py-16">
           <Reveal delay={delay}>
-            <p className="cs-meta-label" style={{ color: accent }}>
-              Decision {section.number}
-            </p>
-            <h2 className="cs-chapter-title mt-4 max-w-3xl">{section.title}</h2>
-            <Prose>{section.context}</Prose>
-            <p className="cs-body mt-8 max-w-[var(--cs-text)] font-medium text-ink">
-              {section.rationale}
-            </p>
-            {section.image && (
-              <div className="mt-10">
+            <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
+              <div
+                className={`${isPhone ? "flex justify-center lg:col-span-5" : "lg:col-span-7"} ${
+                  imageFirst ? "lg:order-1" : "lg:order-2"
+                }`}
+              >
                 <Image
                   src={section.image.src}
                   alt={section.image.alt}
-                  width={1200}
-                  height={700}
-                  className="block h-auto w-full"
+                  width={isPhone ? 390 : 1200}
+                  height={isPhone ? 844 : 700}
+                  className={
+                    isPhone
+                      ? "block h-auto w-full max-w-[260px] md:max-w-[280px]"
+                      : "block h-auto w-full"
+                  }
+                  sizes={isPhone ? "280px" : "(max-width: 1024px) 100vw, 580px"}
                 />
               </div>
-            )}
+              <div
+                className={`${isPhone ? "lg:col-span-7" : "lg:col-span-5"} ${
+                  imageFirst ? "lg:order-2" : "lg:order-1"
+                }`}
+              >
+                {decisionCopy}
+              </div>
+            </div>
           </Reveal>
         </section>
       );
+    }
 
     case "findings":
       return (
@@ -432,6 +590,8 @@ export function SectionRenderer({
               />
             ) : section.layout === "competitive" ? (
               <CompetitiveAnalysisTable />
+            ) : section.layout === "benchmark" && section.benchmark ? (
+              <EvBenchmarkTable data={section.benchmark} theme={theme} />
             ) : section.layout === "styled" ? (
               <ThemedDataTable
                 headers={section.headers}
@@ -491,6 +651,10 @@ export function SectionRenderer({
               <PrincipleCards items={section.items} theme={theme} />
             ) : section.layout === "manifest" ? (
               <PrincipleManifest items={section.items} theme={theme} />
+            ) : section.layout === "hierarchy" ? (
+              <PrincipleHierarchy items={section.items} theme={theme} />
+            ) : section.layout === "future" ? (
+              <FutureOpportunities items={section.items} theme={theme} />
             ) : (
               <div className="mt-12 space-y-10">
                 {section.items.map((item, i) => (
