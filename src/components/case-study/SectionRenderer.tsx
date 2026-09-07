@@ -14,6 +14,7 @@ import { PrincipleManifest } from "./PrincipleManifest";
 import { PrincipleCards } from "./PrincipleCards";
 import { StakeholderCards } from "./StakeholderCards";
 import { ThemedDataTable } from "./ThemedDataTable";
+import { CompetitiveAnalysisTable } from "./CompetitiveAnalysisTable";
 
 type SectionRendererProps = {
   section: CaseStudySection;
@@ -429,6 +430,8 @@ export function SectionRenderer({
                 rows={section.rows as [string, string, string][]}
                 theme={theme}
               />
+            ) : section.layout === "competitive" ? (
+              <CompetitiveAnalysisTable />
             ) : section.layout === "styled" ? (
               <ThemedDataTable
                 headers={section.headers}
@@ -463,6 +466,14 @@ export function SectionRenderer({
                   </tbody>
                 </table>
               </div>
+            )}
+            {section.takeaways && (
+              <ImageTakeaways
+                keyTakeaway={section.takeaways.keyTakeaway}
+                opportunity={section.takeaways.opportunity}
+                ratings={section.takeaways.ratings}
+                accent={accent}
+              />
             )}
           </Reveal>
         </section>

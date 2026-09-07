@@ -20,7 +20,11 @@ export function ThemedDataTable({
       }}
     >
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[520px] text-left text-sm">
+        <table
+          className={`w-full text-left text-sm ${
+            headers.length > 2 ? "min-w-[520px]" : ""
+          }`}
+        >
           <thead>
             <tr
               style={{

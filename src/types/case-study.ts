@@ -99,9 +99,14 @@ export type CaseStudySection =
       navLabel?: string;
       title: string;
       subtitle?: string;
-      layout?: "default" | "cards" | "styled" | "insights";
+      layout?: "default" | "cards" | "styled" | "insights" | "competitive";
       headers: string[];
       rows: string[][];
+      takeaways?: {
+        keyTakeaway: string;
+        opportunity: string;
+        ratings?: { score: number; label: string }[];
+      };
     }
   | {
       type: "cards";

@@ -140,14 +140,12 @@ export const tataSierraHmi: CaseStudy = {
       },
     },
     {
-      type: "image",
+      type: "table",
       id: "competitive-analysis",
       title: "Competitive Analysis",
-      src: img("competitive-analysis-table.png"),
-      alt: "Competitive analysis table for premium automotive HMIs",
-      width: 1024,
-      height: 561,
-      layout: "full",
+      layout: "competitive",
+      headers: ["Vehicle", "Features in PID", "Anything unique", "Ratings"],
+      rows: [],
       takeaways: {
         keyTakeaway:
           "Jeep Grand Wagoneer leads in simplicity, while Mercedes EQS excels in intelligent personalization. There is a clear opportunity to combine personalization, safety, and entertainment control in a balanced way.",
