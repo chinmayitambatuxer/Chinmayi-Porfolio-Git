@@ -183,14 +183,19 @@ function BrandLogo({ brand }: { brand: BrandMark }) {
   };
 
   if (brand === "mercedes") {
+    // Classic Mercedes-Benz three-pointed star in a ring
     return (
       <svg {...common} viewBox="0 0 32 32" fill="none">
-        <circle cx="16" cy="16" r="14" stroke="#1e3a5f" strokeWidth="1.6" />
-        <path
-          d="M16 4.5 16 16 6.2 23.2M16 16l9.8 7.2"
+        <circle
+          cx="16"
+          cy="16"
+          r="14.2"
           stroke="#1e3a5f"
-          strokeWidth="1.5"
-          strokeLinejoin="round"
+          strokeWidth="1.8"
+        />
+        <path
+          fill="#1e3a5f"
+          d="M16 4.1 17.55 15.65 16 16.5 14.45 15.65ZM16 16.5 17.55 15.65 26.95 23.9 16.9 17.65ZM16 16.5 15.1 17.65 5.05 23.9 14.45 15.65Z"
         />
       </svg>
     );
@@ -198,20 +203,15 @@ function BrandLogo({ brand }: { brand: BrandMark }) {
 
   if (brand === "porsche") {
     return (
-      <svg {...common} viewBox="0 0 32 32" fill="none">
-        <path
-          d="M16 3.5c6 0 10.5 3.2 10.5 8.8 0 6.4-5.4 11.4-10.5 16.2C10.9 23.7 5.5 18.7 5.5 12.3 5.5 6.7 10 3.5 16 3.5Z"
-          stroke="#1e3a5f"
-          strokeWidth="1.6"
-        />
-        <path
-          d="M11 18c1.4-3.2 2.2-6.4 5-8.2 2.8 1.8 3.6 5 5 8.2"
-          stroke="#1e3a5f"
-          strokeWidth="1.4"
-          strokeLinecap="round"
-        />
-        <circle cx="16" cy="12.5" r="1.3" fill="#1e3a5f" />
-      </svg>
+      <Image
+        src={img("logo-porsche.png")}
+        alt=""
+        width={28}
+        height={36}
+        className="h-7 w-auto"
+        unoptimized
+        aria-hidden
+      />
     );
   }
 
@@ -223,24 +223,16 @@ function BrandLogo({ brand }: { brand: BrandMark }) {
     );
   }
 
+  // Li Auto official geometric mark (from brand SVG)
   return (
     <svg {...common} viewBox="0 0 32 32" fill="none">
-      <rect
-        x="7"
-        y="6"
-        width="5.5"
-        height="20"
-        rx="1"
-        fill="#1e3a5f"
-      />
-      <rect
-        x="19.5"
-        y="6"
-        width="5.5"
-        height="20"
-        rx="1"
-        fill="#1e3a5f"
-      />
+      <g transform="translate(1.4 6.6) scale(0.595)" fill="#1e3a5f">
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M38.3666 0.736389L43.2286 9.57411H28.2074L23.3684 0.736389H38.3666ZM24.1257 11.0241C22.4057 11.0241 20.617 10.8629 19.5162 9.91939C18.5987 9.20598 18.0941 8.37744 17.5667 7.43397C17.452 7.24681 16.1277 4.82963 15.106 2.96474L15.1055 2.96381C14.4929 1.84564 13.9891 0.926227 13.9204 0.80549H0C0.500179 1.7225 1.00036 2.64336 1.5011 3.56527L1.50114 3.56535L1.50117 3.56539C2.72228 5.81354 3.94676 8.06789 5.1828 10.2876C6.69629 13.0494 8.14103 15.6273 10.7783 17.5144C12.0399 18.4577 13.3698 19.0794 14.9294 19.4707C16.4659 19.839 18.0254 19.8849 19.6076 19.8849H31.9917L27.1299 11.0241H24.1257ZM29.0105 11.0011L33.8725 19.8849H48.8707L43.9857 11.0011H29.0105Z"
+        />
+      </g>
     </svg>
   );
 }

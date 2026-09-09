@@ -76,7 +76,20 @@ export type CaseStudySection =
       width?: number;
       height?: number;
       layout?: "full" | "contained" | "breakout" | "phone";
-      artifact?: "empathy-map";
+      artifact?:
+        | "empathy-map"
+        | "airport-persona"
+        | "airport-journey"
+        | "sdoh-persona"
+        | "sierra-journey"
+        | "sierra-dependency"
+        | "sierra-design-process"
+        | "sierra-architecture"
+        | "sierra-vehicle-state"
+        | "sierra-ownership"
+        | "sierra-audio-ownership"
+        | "sierra-audio-priority"
+        | "sierra-flows";
     }
   | {
       type: "gallery";
@@ -122,7 +135,11 @@ export type CaseStudySection =
       content: string;
       bullets?: string[];
       image?: { src: string; alt: string; width?: number; height?: number };
-      artifact?: "connected-cockpit";
+      artifact?:
+        | "connected-cockpit"
+        | "systems-thinking"
+        | "sierra-competitive-research"
+        | "sierra-decision-tree";
       layout?: "default" | "profile";
       reverse?: boolean;
     }
@@ -148,7 +165,15 @@ export type CaseStudySection =
       navLabel?: string;
       title: string;
       subtitle?: string;
-      cards: { title: string; description: string; tag?: string }[];
+      cards: {
+        title?: string;
+        description: string;
+        tag?: string;
+        image?: string;
+        imageWidth?: number;
+        imageHeight?: number;
+      }[];
+      layout?: "default" | "brainstorm";
     }
   | {
       type: "findings";
@@ -180,7 +205,14 @@ export type CaseStudySection =
       context: string;
       rationale: string;
       options?: { label: string; description: string }[];
-      image?: { src: string; alt: string; device?: "phone" };
+      image?: { src: string; alt: string; device?: "phone"; width?: number; height?: number };
+      images?: {
+        src: string;
+        alt: string;
+        caption?: string;
+        width?: number;
+        height?: number;
+      }[];
     }
   | {
       type: "comparison";
@@ -214,7 +246,7 @@ export type CaseStudySection =
       navLabel?: string;
       title: string;
       subtitle?: string;
-      layout?: "list" | "cards" | "manifest" | "hierarchy" | "future";
+      layout?: "list" | "cards" | "manifest" | "hierarchy" | "future" | "layers";
       items: { title: string; description: string; bullets?: string[] }[];
       image?: { src: string; alt: string };
     }
@@ -274,7 +306,8 @@ export type CaseStudy = {
   summary: string;
   tags: string[];
   heroImage: string;
-  heroLayout?: "phone";
+  heroWidth?: number;
+  heroHeight?: number;
   theme: CaseStudyTheme;
   domain: string;
   role: string;

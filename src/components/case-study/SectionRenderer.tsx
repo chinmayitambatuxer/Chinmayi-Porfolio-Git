@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { CaseStudySection, CaseStudyTheme } from "@/types/case-study";
 import { Reveal } from "@/components/motion/Reveal";
 import { ConnectedCockpitDiagram } from "./ConnectedCockpitDiagram";
+import { SystemsThinkingDiagram } from "./SystemsThinkingDiagram";
 import { FindingCards } from "./FindingCards";
 import { HighlightGrid } from "./HighlightGrid";
 import { InsightCards } from "./InsightCards";
@@ -14,8 +15,26 @@ import { PrincipleManifest } from "./PrincipleManifest";
 import { PrincipleCards } from "./PrincipleCards";
 import { PrincipleHierarchy } from "./PrincipleHierarchy";
 import { FutureOpportunities } from "./FutureOpportunities";
+import { ProductLayersFlow } from "./ProductLayersFlow";
 import { PersonaSplit } from "./PersonaSplit";
-import { PhoneShowcase } from "./PhoneShowcase";
+import { PhoneFrame, PhoneShowcase } from "./PhoneShowcase";
+import { AirportBrainstormGrid } from "./AirportBrainstormGrid";
+import { AirportJourneyMap } from "./AirportJourneyMap";
+import { SierraJourneyMap } from "./SierraJourneyMap";
+import { SierraDependencyMap } from "./SierraDependencyMap";
+import { SierraDesignProcess } from "./SierraDesignProcess";
+import { SierraSystemArchitecture } from "./SierraSystemArchitecture";
+import { SierraMatrices } from "./SierraMatrices";
+import {
+  SierraDecisionTree,
+  SierraAudioPriority,
+} from "./SierraDecisionTree";
+import {
+  SierraInteractionFlows,
+  SierraCompetitiveResearch,
+} from "./SierraInteractionFlows";
+import { AirportPersonaCard } from "./AirportPersonaCard";
+import { SdohPersonaCard } from "./SdohPersonaCard";
 import { StakeholderCards } from "./StakeholderCards";
 import { ThemedDataTable } from "./ThemedDataTable";
 import { CompetitiveAnalysisTable } from "./CompetitiveAnalysisTable";
@@ -52,6 +71,19 @@ function Bullets({ items }: { items: string[] }) {
         </li>
       ))}
     </ul>
+  );
+}
+
+/** Bold "Label:" when a bullet starts with a short title before ": ". */
+function LabeledBulletText({ text }: { text: string }) {
+  const match = text.match(/^([^:]{1,60}):\s+(.+)$/);
+  if (!match) return text;
+
+  return (
+    <>
+      <strong className="font-semibold text-ink">{match[1]}:</strong>{" "}
+      {match[2]}
+    </>
   );
 }
 
@@ -166,6 +198,30 @@ export function SectionRenderer({
       const artifactEl =
         section.artifact === "empathy-map" ? (
           <EmpathyMapDiagram theme={theme} />
+        ) : section.artifact === "airport-persona" ? (
+          <AirportPersonaCard theme={theme} />
+        ) : section.artifact === "airport-journey" ? (
+          <AirportJourneyMap theme={theme} />
+        ) : section.artifact === "sierra-journey" ? (
+          <SierraJourneyMap theme={theme} />
+        ) : section.artifact === "sierra-dependency" ? (
+          <SierraDependencyMap theme={theme} />
+        ) : section.artifact === "sierra-design-process" ? (
+          <SierraDesignProcess theme={theme} />
+        ) : section.artifact === "sierra-architecture" ? (
+          <SierraSystemArchitecture theme={theme} />
+        ) : section.artifact === "sierra-vehicle-state" ? (
+          <SierraMatrices theme={theme} variant="vehicle-state" />
+        ) : section.artifact === "sierra-ownership" ? (
+          <SierraMatrices theme={theme} variant="ownership" />
+        ) : section.artifact === "sierra-audio-ownership" ? (
+          <SierraMatrices theme={theme} variant="audio-ownership" />
+        ) : section.artifact === "sierra-audio-priority" ? (
+          <SierraAudioPriority theme={theme} />
+        ) : section.artifact === "sierra-flows" ? (
+          <SierraInteractionFlows theme={theme} />
+        ) : section.artifact === "sdoh-persona" ? (
+          <SdohPersonaCard theme={theme} />
         ) : null;
 
       const imageEl = section.src ? (
@@ -219,7 +275,9 @@ export function SectionRenderer({
                             {section.bullets.map((bullet) => (
                               <li key={bullet} className="flex gap-3">
                                 <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-ink/30" />
-                                {bullet}
+                                <span>
+                                  <LabeledBulletText text={bullet} />
+                                </span>
                               </li>
                             ))}
                           </ul>
@@ -243,7 +301,29 @@ export function SectionRenderer({
       );
     }
 
-    case "gallery":
+    case "gallery": {
+      // Equalize media height in 2-col grids when screenshots are close in
+      // aspect ratio (e.g. HMI pairs). Skip phone/3-col and large mismatches
+      // so taller document-style shots are not cropped into short neighbors.
+      const nonWideImages = section.images.filter((img) => !img.wide);
+      const sizedRatios = nonWideImages
+        .filter((img) => img.width && img.height)
+        .map((img) => img.width! / img.height!);
+      const minRatio =
+        sizedRatios.length > 0 ? Math.min(...sizedRatios) : undefined;
+      const maxRatio =
+        sizedRatios.length > 0 ? Math.max(...sizedRatios) : undefined;
+      const sharedAspectRatio =
+        section.device !== "phone" &&
+        section.columns !== 3 &&
+        sizedRatios.length >= 2 &&
+        sizedRatios.length === nonWideImages.length &&
+        minRatio !== undefined &&
+        maxRatio !== undefined &&
+        maxRatio / minRatio <= 1.25
+          ? minRatio
+          : undefined;
+
       return (
         <section id={section.id} className="scroll-mt-28 py-10 md:py-14">
           <Reveal delay={delay}>
@@ -257,65 +337,98 @@ export function SectionRenderer({
               className={
                 section.device === "phone"
                   ? "flex flex-wrap justify-center gap-8 md:gap-10"
-                  : `grid gap-8 ${section.columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`
+                  : `grid items-stretch gap-8 ${section.columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`
               }
             >
-              {section.images.map((image) => (
-                <figure
-                  key={image.src}
-                  className={`flex h-full flex-col ${
-                    section.device === "phone"
-                      ? "w-full max-w-[260px] md:max-w-[280px]"
-                      : image.wide
-                        ? `mx-auto w-full max-w-3xl ${
-                            section.columns === 3
-                              ? "md:col-span-3"
-                              : "md:col-span-2"
-                          }`
-                        : ""
-                  }`}
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={image.width ?? 800}
-                    height={image.height ?? 600}
-                    className="block h-auto w-full"
-                  />
-                  {(image.caption || image.bullets) && (
-                    <figcaption className="mt-4 flex-1">
-                      {image.caption && (
-                        <p className="text-sm font-semibold text-ink">
-                          {image.caption}
-                        </p>
-                      )}
-                      {image.bullets && image.bullets.length > 0 && (
-                        <ul
-                          className={`space-y-2 ${image.caption ? "mt-3" : ""}`}
-                        >
-                          {image.bullets.map((bullet) => (
-                            <li
-                              key={bullet}
-                              className="cs-body-sm flex gap-3 text-ink-muted"
-                            >
-                              <span
-                                className="mt-2.5 h-1 w-1 shrink-0 rounded-full"
-                                style={{ backgroundColor: accent }}
-                                aria-hidden
-                              />
-                              {bullet}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </figcaption>
-                  )}
-                </figure>
-              ))}
+              {section.images.map((image) => {
+                const useEqualHeight = Boolean(
+                  sharedAspectRatio && !image.wide,
+                );
+
+                return (
+                  <figure
+                    key={image.src}
+                    className={`flex h-full flex-col ${
+                      section.device === "phone"
+                        ? "w-full max-w-[260px] md:max-w-[280px]"
+                        : image.wide
+                          ? `mx-auto w-full max-w-3xl ${
+                              section.columns === 3
+                                ? "md:col-span-3"
+                                : "md:col-span-2"
+                            }`
+                          : ""
+                    }`}
+                  >
+                    {section.device === "phone" ? (
+                      <PhoneFrame
+                        src={image.src}
+                        alt={image.alt}
+                        width={image.width ?? 390}
+                        height={image.height ?? 844}
+                      />
+                    ) : (
+                      <div
+                        className={`overflow-hidden rounded-2xl border border-border bg-[#F4F7F8] shadow-[0_1px_2px_rgba(15,23,42,0.04)] ${
+                          useEqualHeight ? "h-full w-full" : ""
+                        }`}
+                        style={
+                          useEqualHeight
+                            ? { aspectRatio: String(sharedAspectRatio) }
+                            : undefined
+                        }
+                      >
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          width={image.width ?? 800}
+                          height={image.height ?? 600}
+                          unoptimized
+                          className={
+                            useEqualHeight
+                              ? "block h-full w-full object-cover"
+                              : "block h-auto w-full"
+                          }
+                          sizes="(max-width: 900px) 100vw, 560px"
+                        />
+                      </div>
+                    )}
+                    {(image.caption || image.bullets) && (
+                      <figcaption className="mt-4">
+                        {image.caption && (
+                          <p className="text-sm font-semibold text-ink">
+                            {image.caption}
+                          </p>
+                        )}
+                        {image.bullets && image.bullets.length > 0 && (
+                          <ul
+                            className={`space-y-2 ${image.caption ? "mt-3" : ""}`}
+                          >
+                            {image.bullets.map((bullet) => (
+                              <li
+                                key={bullet}
+                                className="cs-body-sm flex gap-3 text-ink-muted"
+                              >
+                                <span
+                                  className="mt-2.5 h-1 w-1 shrink-0 rounded-full"
+                                  style={{ backgroundColor: accent }}
+                                  aria-hidden
+                                />
+                                {bullet}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </figcaption>
+                    )}
+                  </figure>
+                );
+              })}
             </div>
           </Reveal>
         </section>
       );
+    }
 
     case "flow":
       return (
@@ -417,6 +530,12 @@ export function SectionRenderer({
                 </div>
                 {section.artifact === "connected-cockpit" ? (
                   <ConnectedCockpitDiagram theme={theme} />
+                ) : section.artifact === "systems-thinking" ? (
+                  <SystemsThinkingDiagram theme={theme} />
+                ) : section.artifact === "sierra-competitive-research" ? (
+                  <SierraCompetitiveResearch theme={theme} />
+                ) : section.artifact === "sierra-decision-tree" ? (
+                  <SierraDecisionTree theme={theme} />
                 ) : (
                   section.image && (
                     <Image
@@ -469,6 +588,19 @@ export function SectionRenderer({
     case "decision": {
       const imageFirst = Number(section.number) % 2 === 1;
       const isPhone = section.image?.device === "phone";
+      const decisionImages =
+        section.images && section.images.length > 0
+          ? section.images
+          : section.image
+            ? [
+                {
+                  src: section.image.src,
+                  alt: section.image.alt,
+                  width: section.image.width,
+                  height: section.image.height,
+                },
+              ]
+            : [];
 
       const decisionCopy = (
         <>
@@ -483,7 +615,7 @@ export function SectionRenderer({
         </>
       );
 
-      if (!section.image) {
+      if (decisionImages.length === 0) {
         return (
           <section id={section.id} className="scroll-mt-28 py-12 md:py-16">
             <Reveal delay={delay}>{decisionCopy}</Reveal>
@@ -491,27 +623,83 @@ export function SectionRenderer({
         );
       }
 
+      const renderDecisionImage = (
+        image: (typeof decisionImages)[number],
+        sizes: string,
+      ) => (
+        <figure key={image.src} className="space-y-2">
+          <div className="overflow-hidden rounded-2xl border border-border bg-[#F4F7F8]">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={image.width ?? 1200}
+              height={image.height ?? 700}
+              unoptimized
+              className="block h-auto w-full"
+              sizes={sizes}
+            />
+          </div>
+          {image.caption && (
+            <figcaption className="cs-body-sm text-ink-muted">
+              {image.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+
+      // Multi-screen decisions: copy on top, gallery below — avoids an empty text column
+      if (!isPhone && decisionImages.length > 1) {
+        const hasLead =
+          decisionImages.length % 2 === 1 && decisionImages.length >= 3;
+        const lead = hasLead ? decisionImages[0] : null;
+        const gridImages = hasLead ? decisionImages.slice(1) : decisionImages;
+
+        return (
+          <section id={section.id} className="scroll-mt-28 py-12 md:py-16">
+            <Reveal delay={delay}>
+              <div className="max-w-3xl">{decisionCopy}</div>
+              <div className="mt-10 space-y-6">
+                {lead &&
+                  renderDecisionImage(lead, "(max-width: 1024px) 100vw, 900px")}
+                <div className="grid gap-6 md:grid-cols-2">
+                  {gridImages.map((image) =>
+                    renderDecisionImage(
+                      image,
+                      "(max-width: 768px) 100vw, 50vw",
+                    ),
+                  )}
+                </div>
+              </div>
+            </Reveal>
+          </section>
+        );
+      }
+
+      const media = isPhone ? (
+        <PhoneFrame
+          src={decisionImages[0].src}
+          alt={decisionImages[0].alt}
+          width={390}
+          height={844}
+        />
+      ) : (
+        <div className="space-y-4">
+          {decisionImages.map((image) =>
+            renderDecisionImage(image, "(max-width: 1024px) 100vw, 580px"),
+          )}
+        </div>
+      );
+
       return (
         <section id={section.id} className="scroll-mt-28 py-12 md:py-16">
           <Reveal delay={delay}>
-            <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
+            <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-14">
               <div
                 className={`${isPhone ? "flex justify-center lg:col-span-5" : "lg:col-span-7"} ${
                   imageFirst ? "lg:order-1" : "lg:order-2"
                 }`}
               >
-                <Image
-                  src={section.image.src}
-                  alt={section.image.alt}
-                  width={isPhone ? 390 : 1200}
-                  height={isPhone ? 844 : 700}
-                  className={
-                    isPhone
-                      ? "block h-auto w-full max-w-[260px] md:max-w-[280px]"
-                      : "block h-auto w-full"
-                  }
-                  sizes={isPhone ? "280px" : "(max-width: 1024px) 100vw, 580px"}
-                />
+                {media}
               </div>
               <div
                 className={`${isPhone ? "lg:col-span-7" : "lg:col-span-5"} ${
@@ -655,6 +843,8 @@ export function SectionRenderer({
               <PrincipleHierarchy items={section.items} theme={theme} />
             ) : section.layout === "future" ? (
               <FutureOpportunities items={section.items} theme={theme} />
+            ) : section.layout === "layers" ? (
+              <ProductLayersFlow items={section.items} theme={theme} />
             ) : (
               <div className="mt-12 space-y-10">
                 {section.items.map((item, i) => (
@@ -704,7 +894,17 @@ export function SectionRenderer({
             {section.subtitle && (
               <p className="cs-body-sm mt-4 max-w-2xl">{section.subtitle}</p>
             )}
-            <PerspectiveCards cards={section.cards} theme={theme} />
+            {section.layout === "brainstorm" ? (
+              <AirportBrainstormGrid
+                items={section.cards.map((card) => ({
+                  title: card.title ?? "",
+                  description: card.description,
+                  image: card.image ?? "",
+                }))}
+              />
+            ) : (
+              <PerspectiveCards cards={section.cards} theme={theme} />
+            )}
           </Reveal>
         </section>
       );

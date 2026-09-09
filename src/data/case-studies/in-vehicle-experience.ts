@@ -16,7 +16,7 @@ export const inVehicleExperience: CaseStudy = {
   summary:
     "A UX concept for a contextual Power Saving Mode that helps drivers understand remaining range, conserve energy, and find charging support — without adding unnecessary distraction while driving.",
   tags: ["HMI Design", "EV", "Infotainment", "Safety-first UX"],
-  heroImage: img("hero.png"),
+  heroImage: img("hero-ev-charging.png"),
   theme: {
     accent: "#2A7B6F",
     accentSoft: "#EDF7F5",

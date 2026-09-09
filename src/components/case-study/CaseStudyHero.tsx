@@ -53,23 +53,16 @@ export function CaseStudyHero({ study }: CaseStudyHeroProps) {
         </FadeIn>
 
         <FadeIn delay={0.2}>
-          <div className={study.heroLayout === "phone" ? "mt-16 flex justify-center" : "mt-16"}>
+          <div className="mt-16 overflow-hidden rounded-3xl">
             <Image
               src={study.heroImage}
               alt={study.title}
-              width={study.heroLayout === "phone" ? 390 : 1400}
-              height={study.heroLayout === "phone" ? 844 : 788}
+              width={study.heroWidth ?? 1400}
+              height={study.heroHeight ?? 788}
               priority
-              className={
-                study.heroLayout === "phone"
-                  ? "block h-auto w-full max-w-[260px] md:max-w-[280px]"
-                  : "block h-auto w-full"
-              }
-              sizes={
-                study.heroLayout === "phone"
-                  ? "280px"
-                  : "(max-width: 1200px) 100vw, 1152px"
-              }
+              unoptimized
+              className="block h-auto w-full"
+              sizes="(max-width: 1200px) 100vw, 1152px"
             />
           </div>
         </FadeIn>

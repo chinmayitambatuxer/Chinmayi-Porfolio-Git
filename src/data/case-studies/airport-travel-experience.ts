@@ -11,8 +11,9 @@ export const airportTravelExperience: CaseStudy = {
   summary:
     "A mobile journey companion that helps travellers know what is happening, where to go, and what to do next — through guided boarding, live flight updates, navigation, and amenity discovery.",
   tags: ["Mobile App", "Travel UX", "Wayfinding", "Journey Design"],
-  heroImage: img("layover.png"),
-  heroLayout: "phone",
+  heroImage: img("hero-screens.png"),
+  heroWidth: 1024,
+  heroHeight: 575,
   theme: {
     accent: "#4A6FA5",
     accentSoft: "#EEF3FA",
@@ -111,33 +112,34 @@ export const airportTravelExperience: CaseStudy = {
     {
       type: "cards",
       id: "brainstorming",
+      layout: "brainstorm",
       title: "Brainstorming on the problems faced inside the airport",
       subtitle:
         "Early exploration mapped four recurring friction points from the traveller's perspective.",
       cards: [
         {
-          title: "Travellers getting lost",
+          title: "Travellers getting lost in Airport",
           description:
-            "Some people have strong spatial awareness, others not so much — but most have been lost at least once inside a large or unfamiliar terminal.",
-          tag: "Navigation",
+            "Some people have fantastic spatial awareness, others not so much, but most people have got lost at least once in their life",
+          image: img("brainstorm-lost.png"),
         },
         {
-          title: "Confusion in airport terminals",
+          title: "Confusion in the Airport Terminals",
           description:
-            "A flight may show one terminal at booking, but the carrier can reassign it later — leaving passengers at the wrong gate with minutes to spare.",
-          tag: "Information",
+            "Oftentimes, a flight will have a certain terminal written on it at the time of booking but the carrier may have changed it to a different one later",
+          image: img("brainstorm-terminal.png"),
         },
         {
-          title: "Flights can be delayed",
+          title: "Flights can be Delayed",
           description:
-            "Delays create waiting time without guidance. Finding restrooms, food, or a place to charge becomes harder when the traveller does not know how long they have.",
-          tag: "Disruption",
+            "Delays in flights lead to waiting and gets the traveller blocked in the airport. Its hard to find the needs like restroom, eating space & other time sparring activities",
+          image: img("brainstorm-delay.png"),
         },
         {
-          title: "Forgetting or losing documents",
+          title: "Forgetting or losing the Documents",
           description:
-            "Important travel documents need to stay accessible through check-in and boarding — losing track of them creates severity at critical moments.",
-          tag: "Documents",
+            "Travellers can forget or loose there important documents while travelling and this can cause severity while entering the airport or during check-in process",
+          image: img("brainstorm-documents.png"),
         },
       ],
     },
@@ -158,36 +160,13 @@ export const airportTravelExperience: CaseStudy = {
         "A business analyst travelling Pune → Mumbai → Delhi. Mumbai is a layover. Then the first flight is delayed — and a predictable journey becomes an uncertain waiting period.",
     },
     {
-      type: "split",
-      id: "persona",
-      layout: "profile",
-      title: "Meet Shreyas Singh",
-      label: "Persona",
-      content:
-        "Shreyas is a 28-year-old business analyst who values efficiency and is comfortable with technology. He is not looking for dozens of features — he needs confidence in the next step when his plan changes mid-journey.",
-      bullets: [
-        "Goals: real-time flight and gate information, airport navigation, quick amenity access, clear boarding progress",
-        "Traits: well-organised, detail-oriented, tech-savvy, values efficiency and convenience",
-        "Pain points: navigation anxiety in large airports, information overload, disruption uncertainty, amenity discovery at the wrong moment",
-      ],
-      image: {
-        src: img("persona-shreyas.png"),
-        alt: "Persona portrait for Shreyas Singh, business analyst and frequent traveller",
-        width: 160,
-        height: 160,
-      },
-    },
-    {
       type: "image",
-      id: "persona-detail",
-      title: "Interests, traits, and needs",
+      id: "persona",
+      title: "Meet Shreyas Singh",
       caption:
-        "Persona artifact from the Figma exploration — goals, traits, and pain points that shaped feature priorities.",
-      src: img("persona-traits.png"),
-      alt: "EaseAirport persona detail showing Shreyas Singh's interests, traits, goals, and pain points",
-      layout: "contained",
-      width: 1200,
-      height: 500,
+        "Persona artifact from the Figma exploration — interests, traits, goals, and pain points that shaped feature priorities.",
+      artifact: "airport-persona",
+      layout: "full",
     },
     // 04 — Journey
     {
@@ -204,12 +183,9 @@ export const airportTravelExperience: CaseStudy = {
       id: "journey-map",
       title: "User journey mapping",
       caption:
-        "Check-in → Boarding (1st flight) → Layover → Boarding (2nd flight) → Check-out. Each stage surfaces what the traveller is doing, what makes it difficult, and where the product opportunity lies.",
-      src: img("journey-stages.png"),
-      alt: "EaseAirport user journey map showing five airport travel stages",
+        "Check-in → Boarding (1st flight) → Layover → Boarding (2nd flight) → Check-out. Each stage surfaces actions, emotions, pain points, and product opportunities.",
+      artifact: "airport-journey",
       layout: "full",
-      width: 1543,
-      height: 800,
     },
     {
       type: "findings",
@@ -388,24 +364,32 @@ export const airportTravelExperience: CaseStudy = {
       device: "phone",
       images: [
         {
-          src: img("wireframe-splash.png"),
+          src: img("wireframe-splash-new.png"),
           alt: "EaseAirport splash screen wireframe",
           caption: "Open app",
+          width: 390,
+          height: 844,
         },
         {
           src: img("wireframe-login.png"),
           alt: "EaseAirport login wireframe",
           caption: "Log in",
+          width: 390,
+          height: 844,
         },
         {
           src: img("wireframe-home.png"),
           alt: "EaseAirport personalised home wireframe",
           caption: "Personalised home",
+          width: 390,
+          height: 844,
         },
         {
           src: img("wireframe-boarding.png"),
           alt: "EaseAirport boarding process wireframe",
           caption: "Boarding checklist",
+          width: 390,
+          height: 844,
         },
       ],
     },
@@ -486,11 +470,15 @@ export const airportTravelExperience: CaseStudy = {
           src: img("home.png"),
           alt: "EaseAirport home screen with flight details for Shreyas",
           caption: "Personalised home — flight, terminal, gate",
+          width: 383,
+          height: 820,
         },
         {
           src: img("boarding-process.png"),
           alt: "EaseAirport boarding checklist high-fidelity screen",
           caption: "Boarding progress checklist",
+          width: 766,
+          height: 1640,
         },
       ],
     },
@@ -506,30 +494,36 @@ export const airportTravelExperience: CaseStudy = {
           src: img("flight-delay.png"),
           alt: "EaseAirport delay notification UI",
           caption: "Delay alert with updated timing",
+          width: 390,
+          height: 844,
         },
         {
           src: img("layover.png"),
           alt: "EaseAirport layover flight details on home screen",
           caption: "Layover flight details and connection context",
+          width: 473,
+          height: 1011,
         },
       ],
     },
     {
-      type: "image",
+      type: "gallery",
       id: "ui-amenities",
       title: "Help me use my waiting time",
-      caption:
+      subtitle:
         "Amenity discovery during layover and delay — search, list, and navigate to nearby facilities without leaving the journey context.",
-      bullets: [
-        "Search by facility type or name",
-        "Terminal and location for each listing",
-        "One-tap directions from the delay context",
+      columns: 2,
+      device: "phone",
+      images: [
+        {
+          src: img("amenities.png"),
+          alt: "EaseAirport amenities screen with search and directions",
+          caption:
+            "Search by facility type, see terminal and location, and get one-tap directions.",
+          width: 766,
+          height: 1640,
+        },
       ],
-      src: img("amenities.png"),
-      alt: "EaseAirport amenities screen with search and directions",
-      layout: "phone",
-      width: 383,
-      height: 820,
     },
     {
       type: "narrative",

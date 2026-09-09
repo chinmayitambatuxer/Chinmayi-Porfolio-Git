@@ -63,7 +63,6 @@ export const tataSierraHmi: CaseStudy = {
     {
       type: "narrative",
       id: "challenge",
-      label: "The challenge",
       title: "The Challenge",
       content:
         "Design multi-display audio concurrency inside a shared vehicle ecosystem — two active users, conflicting priorities, one audio pipeline.",
@@ -106,10 +105,7 @@ export const tataSierraHmi: CaseStudy = {
       type: "image",
       id: "process",
       title: "Design Thinking Process",
-      src: img("design-thinking-process.png"),
-      alt: "Design thinking process for Tata Sierra HMI",
-      width: 3286,
-      height: 880,
+      artifact: "sierra-design-process",
       layout: "full",
     },
     {
@@ -134,10 +130,7 @@ export const tataSierraHmi: CaseStudy = {
       title: "Competitive Research",
       content:
         "Benchmarked how premium brands handle passenger displays, media ownership, audio, wellness, and OTA experiences.",
-      image: {
-        src: img("competitive-research.png"),
-        alt: "Competitive research reference board",
-      },
+      artifact: "sierra-competitive-research",
     },
     {
       type: "table",
@@ -224,22 +217,19 @@ export const tataSierraHmi: CaseStudy = {
       title: "Problem Statement",
       cards: [
         {
-          title: "Business perspective",
           description:
             "Tata Motors needed a premium digital cockpit that differentiated Sierra — the passenger display unlocked richer entertainment and harder interaction challenges.",
-          tag: "Business",
+          tag: "Business Perspective",
         },
         {
-          title: "User perspective",
           description:
             "Drivers wanted focus. Passengers wanted freedom. Both expected one system to just work — with a single shared audio output.",
-          tag: "User",
+          tag: "User Perspective",
         },
         {
-          title: "Technical perspective",
           description:
             "Safety rules, vehicle states, shared audio hardware, Android limits, latency, and real-time sync shaped every design decision.",
-          tag: "Technical",
+          tag: "Technical Perspective",
         },
       ],
     },
@@ -448,9 +438,10 @@ export const tataSierraHmi: CaseStudy = {
       type: "image",
       id: "journey-map",
       title: "Experience Journey Map",
-      src: img("experience-journey-map.png"),
-      alt: "Experience journey map for in-vehicle entertainment",
-      layout: "contained",
+      caption:
+        "Seven stages from vehicle entry to destination — tracking driver and passenger emotion, design opportunities, and the emotional trend across the shared cockpit journey.",
+      artifact: "sierra-journey",
+      layout: "full",
     },
     {
       type: "split",
@@ -458,17 +449,13 @@ export const tataSierraHmi: CaseStudy = {
       title: "Systems Thinking",
       content:
         "The project was about designing relationships — every interaction rippled across displays, audio, and vehicle state.",
-      image: {
-        src: img("systems-thinking.png"),
-        alt: "Systems thinking diagram showing component relationships",
-      },
+      artifact: "systems-thinking",
     },
     {
       type: "image",
       id: "dependency-map",
       title: "System Dependency Map",
-      src: img("system-dependency-map.png"),
-      alt: "System dependency map across cockpit components",
+      artifact: "sierra-dependency",
       layout: "contained",
     },
     {
@@ -490,26 +477,24 @@ export const tataSierraHmi: CaseStudy = {
       title: "System Architecture",
       caption:
         "Every action on one display could influence the other — shared resources tied both experiences together.",
-      src: img("system-architecture.png"),
-      alt: "Tata Sierra HMI system architecture diagram",
-      width: 1024,
-      height: 583,
+      artifact: "sierra-architecture",
+      layout: "full",
     },
     {
       type: "image",
       id: "vehicle-state",
       title: "Vehicle State Matrix",
       caption: "Features respond to vehicle status — not static app states.",
-      src: img("vehicle-state-matrix.png"),
-      alt: "Vehicle state matrix for feature availability",
+      artifact: "sierra-vehicle-state",
+      layout: "full",
     },
     {
       type: "image",
       id: "ownership",
       title: "Ownership Matrix",
       caption: "Predictable feature ownership across users and scenarios.",
-      src: img("ownership-matrix.png"),
-      alt: "Display ownership matrix",
+      artifact: "sierra-ownership",
+      layout: "full",
     },
     {
       type: "image",
@@ -517,8 +502,8 @@ export const tataSierraHmi: CaseStudy = {
       title: "Audio Ownership Matrix",
       caption:
         "Audio source resolved automatically by timing and safety priority — not popups.",
-      src: img("audio-ownership-matrix.png"),
-      alt: "Audio ownership matrix",
+      artifact: "sierra-audio-ownership",
+      layout: "full",
     },
     {
       type: "table",
@@ -539,8 +524,7 @@ export const tataSierraHmi: CaseStudy = {
       type: "image",
       id: "audio-diagram",
       title: "Audio Concurrency Diagram",
-      src: img("audio-concurrency-diagram.png"),
-      alt: "Audio concurrency behaviour diagram",
+      artifact: "sierra-audio-priority",
       layout: "contained",
     },
     {
@@ -549,56 +533,17 @@ export const tataSierraHmi: CaseStudy = {
       title: "Concurrency Decision Tree",
       content:
         "Defines how the system handles concurrent interaction across users, resources, and safety events — without asking users to resolve conflicts manually.",
-      image: {
-        src: img("concurrency-decision-tree.png"),
-        alt: "Concurrency decision tree",
-        width: 2048,
-        height: 2686,
-      },
+      artifact: "sierra-decision-tree",
       reverse: true,
     },
     {
-      type: "gallery",
+      type: "image",
       id: "flows",
       navLabel: "Flows",
       title: "Interaction Flows",
-      subtitle: "End-to-end flows documenting decision points across both displays.",
-      columns: 2,
-      images: [
-        {
-          src: img("flow-audio-concurrency.png"),
-          alt: "Audio concurrency flow",
-          caption: "Audio concurrency",
-        },
-        {
-          src: img("flow-relax-mode.png"),
-          alt: "Relax Mode flow",
-          caption: "Relax Mode transitions",
-        },
-        {
-          src: img("flow-passenger-media.png"),
-          alt: "Passenger media control flow",
-          caption: "Passenger media control",
-        },
-        {
-          src: img("flow-fota.png"),
-          alt: "FOTA update flow",
-          caption: "FOTA update journey",
-        },
-        {
-          src: img("flow-boot-up.png"),
-          alt: "Boot-up sequence flow",
-          caption: "Boot-up sequence",
-        },
-        {
-          src: img("audio-concurrency-flow.png"),
-          alt: "Passenger play action flow",
-          caption: "Play action priority checks",
-          width: 1442,
-          height: 2104,
-          wide: true,
-        },
-      ],
+      caption: "End-to-end flows documenting decision points across both displays.",
+      artifact: "sierra-flows",
+      layout: "full",
     },
     {
       type: "phase",
@@ -646,6 +591,16 @@ export const tataSierraHmi: CaseStudy = {
       ],
     },
     {
+      type: "image",
+      id: "ui-dual-display-home",
+      title: "Slab display luxury experience",
+      src: img("final-displays-home.png"),
+      alt: "Dual-display home experience",
+      width: 3382,
+      height: 468,
+      layout: "full",
+    },
+    {
       type: "gallery",
       id: "ui-headphone",
       title: "UI Screens — Headphone Experience",
@@ -654,14 +609,9 @@ export const tataSierraHmi: CaseStudy = {
       columns: 2,
       images: [
         {
-          src: img("final-displays-home.png"),
-          alt: "Dual-display home experience",
-          caption: "Dual-display home experience",
-        },
-        {
           src: img("ui-headphone-routing.png"),
           alt: "Headphone audio routing UI",
-          caption: "Smart audio routing to headphones",
+          caption: "Audio modes for headset & earphones",
         },
       ],
     },
@@ -671,20 +621,34 @@ export const tataSierraHmi: CaseStudy = {
       title: "Other UI Screens",
       columns: 3,
       images: [
-        { src: img("ui-screen-1.png"), alt: "Sierra HMI screen 1", caption: "Media controls" },
-        { src: img("ui-screen-2.png"), alt: "Sierra HMI screen 2", caption: "Audio settings" },
-        { src: img("ui-screen-3.png"), alt: "Sierra HMI screen 3", caption: "Passenger display" },
-        { src: img("ui-screen-4.png"), alt: "Sierra HMI screen 4", caption: "Relax Mode" },
-        { src: img("ui-screen-5.png"), alt: "Sierra HMI screen 5", caption: "JBL listening modes" },
-        { src: img("ui-screen-6.png"), alt: "Sierra HMI screen 6", caption: "System settings" },
+        {
+          src: img("ui-screen-1.png"),
+          alt: "Sierra HMI screen 1",
+          caption: "Passenger display home screen",
+        },
+        { src: img("ui-screen-2.png"), alt: "Sierra HMI screen 2", caption: "Audio modes" },
+        {
+          src: img("ui-screen-3.png"),
+          alt: "Sierra HMI screen 3",
+          caption: "Center infotainment home screen",
+        },
+        { src: img("ui-screen-4.png"), alt: "Sierra HMI screen 4", caption: "App drawer" },
+        { src: img("ui-screen-5.png"), alt: "Sierra HMI screen 5", caption: "Quick access drawer" },
+        { src: img("ui-screen-6.png"), alt: "Sierra HMI screen 6", caption: "Phone app" },
       ],
     },
     {
       type: "image",
       id: "sierra-slab",
-      title: "Sierra Slab Display",
+      title: "Most selling relax mode experience",
       caption:
-        "Seamless luxury digital slab — Passenger Display (12\"), Central Infotainment Display (12\"), Instrument Cluster (10\").",
+        "The Tata Sierra's Relax Mode is a specialized cabin-relaxation feature that orchestrates ambient lighting, climate control, and the infotainment screens to create a peaceful, meditative environment.",
+      bullets: [
+        "Audio & Visual Themes: It features a 3-audio and visual experience with three distinct theme options: water, fire, and space.",
+        "Integration: The graphics blend across the passenger and infotainment displays, accompanied by relaxing ambient sounds.",
+        "Operation: Because of the multi-screen setup, the relax graphics can run on the co-passenger or passenger display while the driver’s screen and central systems continue handling functions like navigation or reverse camera feeds.",
+        "Usage: It is designed to offer a calming experience during pauses in your journey, such as when you are parked or charging the vehicle.",
+      ],
       src: img("sierra-slab-display.png"),
       alt: "Sierra slab display with three connected screens",
       layout: "contained",

@@ -13,7 +13,7 @@ export const workSpace: CaseStudy = {
   headline: "Book a space for efficient working",
   summary:
     "A mobile app concept for booking a nearby, COVID-safe place to work — helping people frustrated by working from home find a calm, well-equipped workspace and book it by the hour.",
-  tags: ["Mobile Application", "UX Research", "Booking Flow"],
+  tags: ["UX Research", "Booking Flow"],
   heroImage: img("hero.png"),
   theme: {
     accent: "#3B5BA5",
@@ -38,7 +38,7 @@ export const workSpace: CaseStudy = {
   metrics: [
     { value: "~20", label: "Survey participants" },
     { value: "25\u201340", label: "Primary users" },
-    { value: "E2E", label: "UX ownership" },
+    { value: "Mobile Application", label: "Platform" },
   ],
   goal: "Give people troubled by working from home an easy way to find, compare, and book a nearby, COVID-safe workspace that has the facilities they need.",
   challenge:

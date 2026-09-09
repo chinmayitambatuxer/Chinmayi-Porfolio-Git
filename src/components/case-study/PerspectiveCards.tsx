@@ -1,7 +1,7 @@
 import type { CaseStudyTheme } from "@/types/case-study";
 
 type PerspectiveCard = {
-  title: string;
+  title?: string;
   description: string;
   tag?: string;
 };
@@ -16,7 +16,7 @@ export function PerspectiveCards({ cards, theme }: PerspectiveCardsProps) {
     <div className="mt-10 grid gap-5 md:grid-cols-3">
       {cards.map((card) => (
         <article
-          key={card.title}
+          key={card.tag ?? card.title ?? card.description.slice(0, 24)}
           className="flex h-full flex-col rounded-2xl border p-6"
           style={{
             backgroundColor: theme.accentSoft,
@@ -28,9 +28,11 @@ export function PerspectiveCards({ cards, theme }: PerspectiveCardsProps) {
               {card.tag}
             </p>
           )}
-          <h3 className={`font-semibold text-ink ${card.tag ? "mt-3" : ""}`}>
-            {card.title}
-          </h3>
+          {card.title && (
+            <h3 className={`font-semibold text-ink ${card.tag ? "mt-3" : ""}`}>
+              {card.title}
+            </h3>
+          )}
           <p className="cs-body-sm mt-3 flex-1">{card.description}</p>
         </article>
       ))}

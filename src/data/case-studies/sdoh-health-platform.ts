@@ -11,7 +11,9 @@ export const sdohHealthPlatform: CaseStudy = {
   summary:
     "A web platform exploring how UX can help practitioners capture Social Determinants of Health, manage patient workflows, and communicate social context to clinical teams — without adding administrative burden.",
   tags: ["0 to 1 Design", "Healthcare", "Dashboard", "Web App"],
-  heroImage: img("hero.png"),
+  heroImage: img("hero-card.png"),
+  heroWidth: 744,
+  heroHeight: 634,
   theme: {
     accent: "#3D9A8F",
     accentSoft: "#EDF8F6",
@@ -125,23 +127,13 @@ export const sdohHealthPlatform: CaseStudy = {
         "Jennifer is the narrative anchor for every design decision — her workflow, not a feature list, defines what the product needs to do.",
     },
     {
-      type: "split",
+      type: "image",
       id: "persona",
-      layout: "profile",
-      title: "Jennifer — Nurse at a hospital",
-      label: "Persona",
-      content:
-        "Jennifer works in a healthcare organisation addressing health-related social needs — screening patients and connecting community and clinical services. She attends patients face-to-face or on audio calls, and needs to manage information across hospital, clinic, and home.",
-      bullets: [
-        "Mindset: gather the right information without making workflow more complicated",
-        "Goals: easy-to-learn tool, capture social surroundings, appointment reminders, see completed and incomplete forms at a glance",
-        "Frustrations: misplaced paper forms, old computer systems, forgotten appointments, too many patients in 24 hours",
-        "Contexts: mobile, desktop/laptop, and iPad/tablet",
-      ],
-      image: {
-        src: img("persona-jennifer.png"),
-        alt: "Jennifer persona card — nurse at a hospital with goals, motivations, and frustrations",
-      },
+      title: "User Persona",
+      caption:
+        "Jennifer is the narrative anchor for every design decision — her workflow, not a feature list, defines what the product needs to do.",
+      artifact: "sdoh-persona",
+      layout: "full",
     },
     {
       type: "quote",
@@ -303,6 +295,37 @@ export const sdohHealthPlatform: CaseStudy = {
         },
       ],
     },
+    {
+      type: "gallery",
+      id: "ia-role-screens",
+      title: "Role surfaces from the final design",
+      subtitle:
+        "Each role gets a distinct dashboard — practitioner workload, clinic admin oversight, and company-level super admin control.",
+      columns: 3,
+      images: [
+        {
+          src: img("dashboard-practitioner.png"),
+          alt: "Practitioner dashboard for Jennifer",
+          caption: "Practitioner",
+          width: 1070,
+          height: 600,
+        },
+        {
+          src: img("admin-dashboard.png"),
+          alt: "Admin dashboard with surveys and practitioners",
+          caption: "Admin",
+          width: 1130,
+          height: 636,
+        },
+        {
+          src: img("super-admin-dashboard.png"),
+          alt: "Super Admin dashboard",
+          caption: "Super Admin",
+          width: 1130,
+          height: 636,
+        },
+      ],
+    },
     // 08 — Core Journey
     {
       type: "phase",
@@ -348,7 +371,9 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "principles",
       id: "product-layers",
       title: "Capture · Organise · Communicate",
-      layout: "list",
+      subtitle:
+        "Three product layers that turn a survey into a usable clinical workflow.",
+      layout: "layers",
       items: [
         {
           title: "Capture",
@@ -378,14 +403,98 @@ export const sdohHealthPlatform: CaseStudy = {
         "Wireframes tested whether Jennifer could find patients, start assessments, track incomplete work, and move information toward reporting — before investing in visual polish.",
     },
     {
-      type: "image",
+      type: "gallery",
       id: "wireframes",
       title: "High-fidelity wireframe exploration",
-      caption:
+      subtitle:
         "The wireframing phase asked: Can Jennifer find the right patient? Does she know where to start? Can she identify incomplete work and return to unfinished assessments?",
-      src: img("wireframes.png"),
-      alt: "SDOH Health wireframe grid — sign-in, dashboard, patients list, patient snapshot, SDOH form, appointments",
-      layout: "contained",
+      columns: 2,
+      images: [
+        {
+          src: img("wf-login.png"),
+          alt: "Login wireframe for SDOH Patient Pathway Tool",
+          caption: "Sign in",
+          width: 1022,
+          height: 574,
+        },
+        {
+          src: img("wf-create-profile.png"),
+          alt: "Create profile wireframe",
+          caption: "Create profile",
+          width: 1022,
+          height: 574,
+        },
+        {
+          src: img("wf-upload-documents.png"),
+          alt: "Upload documents wireframe",
+          caption: "Upload documents",
+          width: 1022,
+          height: 574,
+        },
+        {
+          src: img("wf-dashboard.png"),
+          alt: "Practitioner dashboard wireframe",
+          caption: "Dashboard",
+          width: 1022,
+          height: 574,
+        },
+        {
+          src: img("wf-patients.png"),
+          alt: "Patients list wireframe",
+          caption: "Patients list",
+          width: 1022,
+          height: 574,
+        },
+        {
+          src: img("wf-add-patient.png"),
+          alt: "Add new patient wireframe",
+          caption: "Add new patient",
+          width: 1022,
+          height: 934,
+        },
+        {
+          src: img("wf-patient-snapshot.png"),
+          alt: "Patient snapshot wireframe with triggers and actions",
+          caption: "Patient snapshot",
+          width: 1022,
+          height: 1084,
+        },
+        {
+          src: img("wf-sdoh-form.png"),
+          alt: "SDOH My World assessment form wireframe",
+          caption: "SDOH form",
+          width: 1026,
+          height: 686,
+        },
+        {
+          src: img("wf-appointments-list.png"),
+          alt: "Appointments list wireframe",
+          caption: "Appointments list",
+          width: 1022,
+          height: 572,
+        },
+        {
+          src: img("wf-appointments-calendar.png"),
+          alt: "Appointments calendar wireframe",
+          caption: "Appointments calendar",
+          width: 1022,
+          height: 574,
+        },
+        {
+          src: img("wf-reminders.png"),
+          alt: "Reminders settings wireframe",
+          caption: "Reminders",
+          width: 1022,
+          height: 586,
+        },
+        {
+          src: img("wf-profile.png"),
+          alt: "Profile settings wireframe",
+          caption: "Profile",
+          width: 1022,
+          height: 624,
+        },
+      ],
     },
     // 11 — Key UX Decisions
     {
@@ -406,10 +515,29 @@ export const sdohHealthPlatform: CaseStudy = {
         "Patient information can become fragmented across paper forms, legacy systems, and incomplete records — making it hard for Jennifer to find and review what she needs before a visit.",
       rationale:
         "A structured digital patient experience — directory, intake, and snapshot — keeps patient context in one place. Jennifer can search patients, add new records, and review triggers and actions without switching systems.",
-      image: {
-        src: img("patients-list.png"),
-        alt: "SDOH Health patients list with search and practitioner assignment",
-      },
+      images: [
+        {
+          src: img("patients-list.png"),
+          alt: "Patients list with search and practitioner assignment",
+          caption: "Patient directory — find and open the right record",
+          width: 1070,
+          height: 602,
+        },
+        {
+          src: img("patient-snapshot.png"),
+          alt: "Patient snapshot with triggers and actions",
+          caption: "Patient snapshot — triggers and next actions in one place",
+          width: 1070,
+          height: 926,
+        },
+        {
+          src: img("wf-add-patient.png"),
+          alt: "Add new patient wireframe intake form",
+          caption: "Add patient — structured intake before the visit",
+          width: 1022,
+          height: 934,
+        },
+      ],
     },
     {
       type: "decision",
@@ -420,10 +548,22 @@ export const sdohHealthPlatform: CaseStudy = {
         "A busy practitioner may not remember which forms are complete across a 24-patient day — creating invisible anxiety about unfinished work.",
       rationale:
         "The dashboard and patient views make completed and incomplete work visible at a glance. Form progress becomes part of the workload overview, not something Jennifer has to reconstruct from memory.",
-      image: {
-        src: img("dashboard-practitioner.png"),
-        alt: "SDOH Health practitioner dashboard with greeting, stats, and incomplete forms",
-      },
+      images: [
+        {
+          src: img("dashboard-practitioner.png"),
+          alt: "Practitioner dashboard with completed and incomplete survey counts",
+          caption: "Dashboard — completed vs incomplete work at a glance",
+          width: 1070,
+          height: 600,
+        },
+        {
+          src: img("patients-list.png"),
+          alt: "Patients list showing snapshot counts per patient",
+          caption: "Patients list — snapshot completion visible per record",
+          width: 1070,
+          height: 602,
+        },
+      ],
     },
     {
       type: "decision",
@@ -434,10 +574,29 @@ export const sdohHealthPlatform: CaseStudy = {
         "High patient volume creates a risk of forgotten appointments — especially when Jennifer moves between hospital, clinic, and home contexts.",
       rationale:
         "Upcoming appointments surface on the dashboard and in a dedicated scheduling view. Jennifer can see her week at a glance and receive reminders for scheduled form-filling sessions.",
-      image: {
-        src: img("schedule-appointments.png"),
-        alt: "SDOH Health weekly appointment calendar for practitioner scheduling",
-      },
+      images: [
+        {
+          src: img("schedule-appointments.png"),
+          alt: "Weekly appointment calendar",
+          caption: "Calendar view — the week at a glance",
+          width: 1022,
+          height: 574,
+        },
+        {
+          src: img("schedule-list.png"),
+          alt: "Appointments list view",
+          caption: "List view — scan by patient and type",
+          width: 1022,
+          height: 572,
+        },
+        {
+          src: img("wf-reminders.png"),
+          alt: "Reminders settings wireframe",
+          caption: "Reminders — stay ahead of scheduled form sessions",
+          width: 1022,
+          height: 586,
+        },
+      ],
     },
     {
       type: "decision",
@@ -448,10 +607,22 @@ export const sdohHealthPlatform: CaseStudy = {
         "SDOH covers a broad range of social circumstances — income, employment, food security, housing — that can feel overwhelming in a single unstructured conversation.",
       rationale:
         "The digital form organises questions into a manageable workflow with clear sections and progress. Jennifer can move through the survey efficiently and return to incomplete sections later.",
-      image: {
-        src: img("sdoh-form.png"),
-        alt: "SDOH Health My World form — structured social determinants questionnaire",
-      },
+      images: [
+        {
+          src: img("sdoh-form.png"),
+          alt: "My World SDOH questionnaire",
+          caption: "My World — structured sections with progress",
+          width: 1068,
+          height: 770,
+        },
+        {
+          src: img("wf-sdoh-form.png"),
+          alt: "SDOH form wireframe exploration",
+          caption: "Wireframe exploration — checklist layout before polish",
+          width: 1026,
+          height: 686,
+        },
+      ],
     },
     {
       type: "decision",
@@ -462,10 +633,22 @@ export const sdohHealthPlatform: CaseStudy = {
         "Captured SDOH data has limited value if it cannot be communicated effectively to doctors and clinical teams.",
       rationale:
         "Patient snapshots and shareable reports connect survey responses to assessment and treatment information — making social context actionable beyond the initial form-filling session.",
-      image: {
-        src: img("report-share.png"),
-        alt: "SDOH Health patient snapshot for review and sharing with clinical teams",
-      },
+      images: [
+        {
+          src: img("report-share.png"),
+          alt: "Patient snapshot for clinical review",
+          caption: "Patient snapshot — review before sharing",
+          width: 1069,
+          height: 979,
+        },
+        {
+          src: img("share-snapshot.png"),
+          alt: "Share snapshot modal for clinical teams",
+          caption: "Share — send the snapshot to the clinical team",
+          width: 1068,
+          height: 602,
+        },
+      ],
     },
     // 12 — High-Fidelity UI
     {
@@ -476,6 +659,30 @@ export const sdohHealthPlatform: CaseStudy = {
       title: "Screens grouped by what Jennifer is trying to do",
       description:
         "The final UI is organised by user task — not by feature list — with each group tied to a specific moment in the practitioner workflow.",
+    },
+    {
+      type: "gallery",
+      id: "ui-entry",
+      title: "Help me get started",
+      subtitle:
+        "Sign-in and document onboarding from the final practitioner flow — establishing access before the clinical day begins.",
+      columns: 2,
+      images: [
+        {
+          src: img("login.png"),
+          alt: "SDOH Patient Pathway Tool login screen",
+          caption: "Sign in",
+          width: 1054,
+          height: 594,
+        },
+        {
+          src: img("upload-documents.png"),
+          alt: "Upload license documents onboarding screen",
+          caption: "Upload credentials",
+          width: 1068,
+          height: 602,
+        },
+      ],
     },
     {
       type: "split",
@@ -492,6 +699,8 @@ export const sdohHealthPlatform: CaseStudy = {
       image: {
         src: img("dashboard-practitioner.png"),
         alt: "SDOH Health practitioner dashboard — workload overview",
+        width: 1070,
+        height: 600,
       },
       reverse: true,
     },
@@ -500,28 +709,36 @@ export const sdohHealthPlatform: CaseStudy = {
       id: "ui-patient",
       title: "Help me manage a patient",
       subtitle:
-        "From patient directory through intake to snapshot review — keeping patient context findable and actionable.",
+        "From patient directory through snapshot review and scheduling — keeping patient context findable and actionable.",
       columns: 2,
       images: [
         {
           src: img("patients-list.png"),
           alt: "Patients list with search and filters",
           caption: "Find the right patient quickly",
-        },
-        {
-          src: img("add-patient.png"),
-          alt: "Add new patient multi-step intake form",
-          caption: "Structured patient intake",
+          width: 1070,
+          height: 602,
         },
         {
           src: img("patient-snapshot.png"),
           alt: "Patient snapshot with SDOH triggers and clinical actions",
           caption: "Review triggers and next actions",
+          width: 1070,
+          height: 926,
         },
         {
           src: img("schedule-appointments.png"),
-          alt: "Weekly appointment calendar",
-          caption: "See the week at a glance",
+          alt: "Weekly appointment calendar wireframe",
+          caption: "Calendar view",
+          width: 1022,
+          height: 574,
+        },
+        {
+          src: img("schedule-list.png"),
+          alt: "Appointments list view",
+          caption: "List view",
+          width: 1022,
+          height: 572,
         },
       ],
     },
@@ -540,45 +757,121 @@ export const sdohHealthPlatform: CaseStudy = {
       image: {
         src: img("sdoh-form.png"),
         alt: "SDOH form — My World structured questionnaire",
+        width: 1068,
+        height: 770,
       },
     },
     {
-      type: "image",
+      type: "gallery",
       id: "ui-communicate",
       title: "Help me communicate",
-      caption:
-        "Patient snapshots connect captured SDOH information to assessment and treatment context — making social-health data useful beyond the initial form session.",
-      src: img("report-share.png"),
-      alt: "Patient snapshot for clinical review and sharing",
-      layout: "contained",
+      subtitle:
+        "Snapshots and share flows turn captured SDOH data into something clinicians can act on.",
+      columns: 2,
+      images: [
+        {
+          src: img("report-share.png"),
+          alt: "Patient snapshot for clinical review",
+          caption: "Patient snapshot",
+          width: 1069,
+          height: 979,
+        },
+        {
+          src: img("share-snapshot.png"),
+          alt: "Share snapshot with clinical teams",
+          caption: "Share with the clinical team",
+          width: 1068,
+          height: 602,
+        },
+      ],
     },
     {
       type: "gallery",
       id: "ui-admin",
-      title: "Admin and platform management",
+      title: "Admin — clinic operations",
       subtitle:
-        "Supporting flows for profile setup, credentials, and multi-clinic administration — separated from the practitioner day-to-day workflow.",
+        "Admin surfaces from the Figma final designs — practitioner management, profile, security, and support.",
       columns: 2,
       images: [
         {
-          src: img("create-profile.png"),
-          alt: "Create profile onboarding screen",
-          caption: "Onboarding — create profile",
+          src: img("admin-dashboard.png"),
+          alt: "Admin dashboard with surveys and practitioners",
+          caption: "Admin dashboard",
+          width: 1130,
+          height: 636,
+        },
+        {
+          src: img("practitioner-info.png"),
+          alt: "Practitioner information management",
+          caption: "Practitioner information",
+          width: 1136,
+          height: 862,
+        },
+        {
+          src: img("add-practitioner.png"),
+          alt: "Add new practitioner with permissions",
+          caption: "Add practitioner",
+          width: 1134,
+          height: 640,
         },
         {
           src: img("profile-settings.png"),
-          alt: "Profile and license uploads",
-          caption: "Profile and credentials",
+          alt: "Profile settings and credentials",
+          caption: "Profile settings",
+          width: 1130,
+          height: 764,
         },
         {
           src: img("change-password.png"),
           alt: "Change password settings",
           caption: "Account security",
+          width: 1130,
+          height: 636,
+        },
+        {
+          src: img("support-queries.png"),
+          alt: "Support and queries inbox",
+          caption: "Queries / support",
+          width: 1130,
+          height: 638,
+        },
+      ],
+    },
+    {
+      type: "gallery",
+      id: "ui-super-admin",
+      title: "Super Admin — organisation control",
+      subtitle:
+        "Company-level administration kept separate from Jennifer's clinical day.",
+      columns: 2,
+      images: [
+        {
+          src: img("super-admin-dashboard.png"),
+          alt: "Super Admin dashboard",
+          caption: "Super Admin dashboard",
+          width: 1130,
+          height: 636,
         },
         {
           src: img("companies-admin.png"),
-          alt: "Companies administration for super admin",
-          caption: "Super Admin — companies",
+          alt: "Companies list administration",
+          caption: "Companies",
+          width: 1130,
+          height: 634,
+        },
+        {
+          src: img("add-company.png"),
+          alt: "Add new company and default admin invite",
+          caption: "Add company",
+          width: 1130,
+          height: 638,
+        },
+        {
+          src: img("edit-admin.png"),
+          alt: "Edit default admin settings",
+          caption: "Edit default admin",
+          width: 1130,
+          height: 650,
         },
       ],
     },
@@ -604,16 +897,6 @@ export const sdohHealthPlatform: CaseStudy = {
         "Form progress visible on any device",
         "Primary actions stay within easy reach",
       ],
-    },
-    {
-      type: "image",
-      id: "mobile-exploration",
-      title: "Early mobile wireframe exploration",
-      caption:
-        "Sign-in and onboarding wireframes explored how the workflow might adapt to smaller screens — before committing to a desktop-first clinical experience.",
-      src: img("mobile-sign-in.png"),
-      alt: "Low-fidelity mobile sign-in wireframe",
-      layout: "contained",
     },
     // 14 — Accessibility
     {

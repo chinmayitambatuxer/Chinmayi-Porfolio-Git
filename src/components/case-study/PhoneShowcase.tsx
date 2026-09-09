@@ -9,20 +9,15 @@ type PhoneFrameProps = {
 
 export function PhoneFrame({ src, alt, width = 390, height = 844 }: PhoneFrameProps) {
   return (
-    <div className="mx-auto w-full max-w-[200px] shrink-0 sm:max-w-[220px] md:max-w-[240px]">
-      <div
-        className="overflow-hidden rounded-[1.65rem] border border-black/10 bg-black shadow-lg ring-1 ring-black/5"
-        style={{ boxShadow: "0 18px 40px -12px rgba(0,0,0,0.28)" }}
-      >
-        <Image
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          className="block h-auto w-full"
-          sizes="240px"
-        />
-      </div>
+    <div className="mx-auto w-full max-w-[220px] shrink-0 sm:max-w-[250px] md:max-w-[280px]">
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className="block h-auto w-full"
+        sizes="280px"
+      />
     </div>
   );
 }

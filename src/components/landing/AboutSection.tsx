@@ -30,7 +30,7 @@ export function AboutSection() {
                 forefront.
               </p>
               <p>
-                Currently at{" "}
+                Currently working at{" "}
                 <strong className="font-semibold text-[var(--lp-ink)]">
                   Tata Elxsi
                 </strong>

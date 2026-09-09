@@ -46,7 +46,7 @@ export const site = {
     { value: "3", label: "Domains mastered" },
     { value: "10+", label: "Products shipped" },
   ] satisfies SiteStat[],
-  awards: ["Star Award for Outstanding Performance — Tata Elxsi"],
+  awards: ["Star Award for Outstanding Performance — Capgemini"],
   skills: [
     "HMI Design",
     "User-Centered Design",
@@ -58,6 +58,7 @@ export const site = {
     "Visual Design",
     "Wireframing",
     "Prototyping",
+    "Vibe Designing",
   ],
   tools: [
     "Figma",
@@ -75,7 +76,7 @@ export const site = {
       role: "Sr. UX Designer",
       period: "Sep 2023 — Present",
       description:
-        "Designing next-generation in-vehicle HMI experiences for Tata Motors — from passenger displays to EV cockpit systems, working cross-functionally with engineering and supplier teams.",
+        "Designing next-generation in-vehicle HMI experiences for TATA.CARS (Tata Motors) — from passenger displays to EV cockpit systems, working cross-functionally with engineering and supplier teams.",
       highlights: [
         "HMI for passenger & EV cockpit",
         "Tata Sierra experience design",
@@ -104,6 +105,8 @@ export const site = {
         "SDOH health form portal",
         "Medical document management UI",
         "User research & prototyping",
+        "Application & web application for Edutech platform Skilledge",
+        "Marketing media — gifting calendars, social media posts, brochures & subject booklets",
       ],
     },
   ] satisfies SiteExperience[],
@@ -118,11 +121,13 @@ export const site = {
       degree: "HSC — Science",
       institution: "Maharashtra State Board",
       period: "2017",
+      detail: "61%",
     },
     {
       degree: "SSC",
       institution: "Maharashtra State Board",
       period: "2015",
+      detail: "76%",
     },
   ] satisfies SiteEducation[],
   certifications: [
