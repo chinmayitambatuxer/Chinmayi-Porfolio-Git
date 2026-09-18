@@ -23,6 +23,11 @@ export type SiteCertification = {
   issuer: string;
 };
 
+export type SiteTool = {
+  name: string;
+  logo: string;
+};
+
 export const site = {
   name: "Chinmayi Negi",
   title: "Product Designer",
@@ -34,6 +39,7 @@ export const site = {
   phone: "+91 8698974736",
   resumeUrl: "/Resume_Chinmayi_Negi.pdf",
   profileImage: "/images/profile.jpg",
+  aboutPortraitImage: "/images/about-portrait.png",
   social: {
     linkedin: "https://www.linkedin.com/in/chinmayinegi",
     behance: "https://www.behance.net/chinmayinegi",
@@ -61,15 +67,16 @@ export const site = {
     "Vibe Designing",
   ],
   tools: [
-    "Figma",
-    "Sketch",
-    "Miro",
-    "Photoshop",
-    "Illustrator",
-    "InVision",
-    "Adobe XD",
-    "Framer",
-  ],
+    { name: "Figma", logo: "/images/tools/figma.svg" },
+    { name: "Sketch", logo: "/images/tools/sketch.svg" },
+    { name: "Miro", logo: "/images/tools/miro.svg" },
+    { name: "Photoshop", logo: "/images/tools/photoshop.svg" },
+    { name: "Illustrator", logo: "/images/tools/illustrator.svg" },
+    { name: "InVision", logo: "/images/tools/invision.svg" },
+    { name: "Adobe XD", logo: "/images/tools/xd.svg" },
+    { name: "Framer", logo: "/images/tools/framer.svg" },
+    { name: "Cursor", logo: "/images/tools/cursor.svg" },
+  ] satisfies SiteTool[],
   experience: [
     {
       company: "Tata Elxsi",
@@ -118,7 +125,7 @@ export const site = {
       detail: "74%",
     },
     {
-      degree: "HSC — Science",
+      degree: "HSC — Commerce",
       institution: "Maharashtra State Board",
       period: "2017",
       detail: "61%",

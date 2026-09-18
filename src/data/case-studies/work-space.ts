@@ -3,8 +3,8 @@ import { caseStudyImage } from "@/lib/assets";
 
 const img = (file: string) => caseStudyImage("work-space", file);
 
-// Mobile screens render portrait (~9:19).
-const PHONE = { width: 360, height: 760 };
+// Hi-fi mobile frames exported from Figma (EV-Dashboard Final Design).
+const PHONE = { width: 401, height: 840 };
 
 export const workSpace: CaseStudy = {
   slug: "work-space",
@@ -15,15 +15,17 @@ export const workSpace: CaseStudy = {
     "A mobile app concept for booking a nearby, COVID-safe place to work — helping people frustrated by working from home find a calm, well-equipped workspace and book it by the hour.",
   tags: ["UX Research", "Booking Flow"],
   heroImage: img("hero.png"),
+  heroWidth: 1920,
+  heroHeight: 1184,
   theme: {
-    accent: "#3B5BA5",
-    accentSoft: "#EEF2FB",
-    accentMuted: "#8AA0D0",
+    accent: "#F1592A",
+    accentSoft: "#FFF9F8",
+    accentMuted: "#F5A88A",
   },
   domain: "Productivity",
   role: "UX Designer",
   team: "Solo — concept project",
-  timeline: "2021",
+  timeline: "2 Months",
   platform: "Mobile app (iOS & Android)",
   overview:
     "Work Space is an app where people can register and book a working space near them. With so many struggling to work from home during COVID-19, the idea was to make a genuinely good, safe place to work easy to find — book a room based on your needs and work without disturbance.",
@@ -205,20 +207,24 @@ export const workSpace: CaseStudy = {
     {
       type: "split",
       id: "persona",
+      navLabel: "Persona",
+      artifact: "work-space-persona",
       title: "Meet Soham — frustrated by working from home",
-      label: "Persona",
+      label: "Persona Creation",
       content:
         "Soham is a 29-year-old IT engineer in Pune. He's a corporate employee working from home with two young kids, and he's constantly interrupted. He can't focus the way he used to at the office — and he needs a calm place to work efficiently.",
+      quote:
+        "Offices are closed but I am not able to focus on my work at home. I need a calm place to work efficiently.",
       bullets: [
-        "Goals: book a workspace with all the facilities he needs, and compare prices in one place",
-        "Pain points: frustrated by WFH, disturbed by kids and chores, and hit by internet and power issues at home",
-        "Motivations: AC, coffee, a peaceful space, reliable Wi-Fi and power — plus reviews, ratings, and photos he can trust",
+        "Goals: Book a workspace with the facilities he needs and compare prices in one place",
+        "Pain points: Frustrated by WFH, disturbed by kids and chores, and unreliable internet and power at home",
+        "Motivations: AC, coffee, a peaceful space, reliable Wi‑Fi and power — plus reviews, ratings, and photos he can trust",
       ],
       image: {
         src: img("persona-soham.png"),
-        alt: "Persona portrait for Soham, a corporate employee",
-        width: 600,
-        height: 600,
+        alt: "Portrait of Soham, IT engineer and Work Space persona",
+        width: 439,
+        height: 659,
       },
     },
     {
@@ -262,14 +268,14 @@ export const workSpace: CaseStudy = {
     {
       type: "image",
       id: "taskflow-diagram",
-      title: "Task flow",
-      caption:
-        "The full task flow, including the branch where a space isn't available and the user returns to search.",
-      src: img("task-flow.png"),
+      title: "Task Flow",
+      subtitle:
+        "Scenario: Soham wants to book a nearby workplace for 5 days of working.",
       alt: "Task flow diagram for booking a workspace",
-      width: 1400,
-      height: 760,
-      layout: "contained",
+      layout: "full",
+      src: img("task-flow.png"),
+      width: 7680,
+      height: 3460,
     },
     // 05 — Design
     {
@@ -282,37 +288,182 @@ export const workSpace: CaseStudy = {
         "Low-fidelity wireframes established the structure of each screen before the final visual design brought it to life.",
     },
     {
-      type: "gallery",
+      type: "image",
       id: "wireframes",
       title: "Wireframes",
       subtitle: "The core screens, sketched before styling.",
-      columns: 3,
-      images: [
-        { src: img("wf-signin.png"), alt: "Sign in wireframe", caption: "Sign in", width: PHONE.width, height: PHONE.height },
-        { src: img("wf-onboarding.png"), alt: "Onboarding wireframe", caption: "Onboarding", width: PHONE.width, height: PHONE.height },
-        { src: img("wf-home.png"), alt: "Home screen wireframe", caption: "Home", width: PHONE.width, height: PHONE.height },
-        { src: img("wf-space.png"), alt: "Space description wireframe", caption: "Space description", width: PHONE.width, height: PHONE.height },
-        { src: img("wf-location.png"), alt: "Check location wireframe", caption: "Check location", width: PHONE.width, height: PHONE.height },
-        { src: img("wf-availability.png"), alt: "Check availability wireframe", caption: "Check availability", width: PHONE.width, height: PHONE.height },
-        { src: img("wf-booking.png"), alt: "Confirm booking wireframe", caption: "Confirm booking", width: PHONE.width, height: PHONE.height },
-      ],
+      layout: "full",
+      src: img("wireframes.png"),
+      alt: "Wireframes for sign in, onboarding, home, space description, location, availability, and confirm booking",
+      width: 1024,
+      height: 335,
     },
     {
       type: "gallery",
       id: "final-ui",
       title: "Final design",
-      subtitle: "Key screens from the final UI, from first launch to a confirmed booking.",
-      columns: 3,
-      images: [
-        { src: img("ui-splash.png"), alt: "Splash screen", caption: "Splash", width: PHONE.width, height: PHONE.height },
-        { src: img("ui-onboarding.png"), alt: "Onboarding screen", caption: "Onboarding", width: PHONE.width, height: PHONE.height },
-        { src: img("ui-home.png"), alt: "Home screen", caption: "Home", width: PHONE.width, height: PHONE.height },
-        { src: img("ui-location.png"), alt: "Select location screen", caption: "Select location", width: PHONE.width, height: PHONE.height },
-        { src: img("ui-space.png"), alt: "Space description screen", caption: "Space description", width: PHONE.width, height: PHONE.height },
-        { src: img("ui-availability.png"), alt: "Check availability screen", caption: "Check availability", width: PHONE.width, height: PHONE.height },
-        { src: img("ui-booking.png"), alt: "Confirm booking screen", caption: "Confirm booking", width: PHONE.width, height: PHONE.height },
-        { src: img("ui-bookings.png"), alt: "My bookings screen", caption: "My bookings", width: PHONE.width, height: PHONE.height },
-        { src: img("ui-chat.png"), alt: "Chat screen", caption: "Chat", width: PHONE.width, height: PHONE.height },
+      subtitle:
+        "Final hi-fi screens in the same staggered flow as the case study deck — from splash and sign-in through booking, plus settings and profile flows.",
+      device: "phone",
+      galleryLayout: "flow",
+      images: [],
+      flowRows: [
+        {
+          screens: [
+            {
+              src: img("ui-splash.png"),
+              alt: "Splash screen",
+              caption: "Splash Screen",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-login.png"),
+              alt: "Log in screens",
+              caption: "Log In Screens",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-onboarding.png"),
+              alt: "Onboarding screen 1",
+              caption: "Onboarding Screen 1",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-onboarding-2.png"),
+              alt: "Onboarding screen 2",
+              caption: "Onboarding Screen 2",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-onboarding-3.png"),
+              alt: "Onboarding screen 3",
+              caption: "Onboarding Screen 3",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-select-location.png"),
+              alt: "Select location screen",
+              caption: "Select Location",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              src: img("ui-home.png"),
+              alt: "Home screen",
+              caption: "Home Screen",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-space.png"),
+              alt: "Space description page",
+              caption: "Space Description Page",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-location.png"),
+              alt: "Check location screen",
+              caption: "Check Location",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-availability.png"),
+              alt: "Check availability screen",
+              caption: "Check Availability",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-booking.png"),
+              alt: "Confirm booking screen",
+              caption: "Confirm Booking",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              src: img("ui-settings.png"),
+              alt: "Settings screen",
+              caption: "Settings",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-profile.png"),
+              alt: "Profile screen",
+              caption: "Profile",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-edit-profile.png"),
+              alt: "Edit profile screen",
+              caption: "Edit Profile",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-search.png"),
+              alt: "Search screen",
+              caption: "Search",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-bookings.png"),
+              alt: "My bookings screen",
+              caption: "My bookings",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              src: img("ui-signup.png"),
+              alt: "Sign up screen",
+              caption: "Sign Up Screen",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-verification.png"),
+              alt: "Verification screens",
+              caption: "Verification Screens",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-bookmarks.png"),
+              alt: "Bookmarks screen",
+              caption: "Bookmarks",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+            {
+              src: img("ui-chat.png"),
+              alt: "Chat screen",
+              caption: "Chat screen",
+              width: PHONE.width,
+              height: PHONE.height,
+            },
+          ],
+        },
       ],
     },
   ],

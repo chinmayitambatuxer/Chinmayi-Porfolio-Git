@@ -88,13 +88,13 @@ function emotionTone(emotion: Emotion, theme: CaseStudyTheme) {
     case "Happy":
       return { bg: theme.accentSoft, color: theme.accent };
     case "Slightly Happy":
-      return { bg: "#FFF8F2", color: theme.accentMuted };
+      return { bg: "#E4EDF6", color: theme.accentMuted };
     case "Neutral":
-      return { bg: "#F3EEE8", color: "#8A7568" };
+      return { bg: "#E8EEF4", color: "#5C6B7A" };
     case "Bored / Sleepy":
-      return { bg: "#F8EDE8", color: "#A85A45" };
+      return { bg: "#DCE6F0", color: "#4A6080" };
     case "Concerned":
-      return { bg: "#F7E8E4", color: "#B04A35" };
+      return { bg: "#D4DEEA", color: "#3D5570" };
   }
 }
 
@@ -300,7 +300,7 @@ export function SierraJourneyMap({ theme }: SierraJourneyMapProps) {
           {driverEmotions.map((emotion, i) => (
             <div
               key={`driver-${stages[i]}`}
-              className={`flex items-center justify-center border-l border-dashed border-[#E8D8CC] px-2 py-4 ${
+              className={`flex items-center justify-center border-l border-dashed border-[#D5DDE6] px-2 py-4 ${
                 i === stages.length - 1 ? "pr-3" : ""
               }`}
             >
@@ -317,8 +317,8 @@ export function SierraJourneyMap({ theme }: SierraJourneyMapProps) {
           <div
             className="flex items-center px-3 py-4 text-[0.625rem] font-bold uppercase tracking-wider"
             style={{
-              backgroundColor: "#F6EFE8",
-              color: "#9A5A38",
+              backgroundColor: theme.accentSoft,
+              color: theme.accent,
             }}
           >
             Passenger emotion
@@ -326,7 +326,7 @@ export function SierraJourneyMap({ theme }: SierraJourneyMapProps) {
           {passengerEmotions.map((emotion, i) => (
             <div
               key={`passenger-${stages[i]}`}
-              className={`flex items-center justify-center border-l border-dashed border-[#E8D8CC] px-2 py-4 ${
+              className={`flex items-center justify-center border-l border-dashed border-[#D5DDE6] px-2 py-4 ${
                 i === stages.length - 1 ? "pr-3" : ""
               }`}
             >
@@ -342,14 +342,14 @@ export function SierraJourneyMap({ theme }: SierraJourneyMapProps) {
         >
           <div
             className="flex items-center px-3 py-4 text-[0.625rem] font-bold uppercase tracking-wider"
-            style={{ backgroundColor: "#F3EDE4", color: "#7A5A40" }}
+            style={{ backgroundColor: "#E4EDF6", color: theme.accent }}
           >
             Opportunity
           </div>
           {opportunities.map((item, i) => (
             <div
               key={item.title}
-              className={`box-border flex min-w-0 border-l border-dashed border-[#E8D8CC] px-2 py-3 ${
+              className={`box-border flex min-w-0 border-l border-dashed border-[#D5DDE6] px-2 py-3 ${
                 i === stages.length - 1 ? "pr-3" : ""
               }`}
             >
@@ -375,7 +375,7 @@ export function SierraJourneyMap({ theme }: SierraJourneyMapProps) {
         <div className="grid rounded-b-2xl bg-white" style={gridStyle}>
           <div
             className="flex items-center rounded-bl-2xl px-3 py-4 text-[0.625rem] font-bold uppercase tracking-wider"
-            style={{ backgroundColor: "#F3EDE4", color: "#7A5A40" }}
+            style={{ backgroundColor: "#E4EDF6", color: theme.accent }}
           >
             Emotional journey (trend)
           </div>

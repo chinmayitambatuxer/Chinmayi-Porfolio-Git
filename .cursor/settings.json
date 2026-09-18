@@ -1,0 +1,7 @@
+{
+  "plugins": {
+    "devtools-for-agents": {
+      "enabled": true
+    }
+  }
+}

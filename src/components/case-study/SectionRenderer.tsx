@@ -16,7 +16,11 @@ import { PrincipleCards } from "./PrincipleCards";
 import { PrincipleHierarchy } from "./PrincipleHierarchy";
 import { FutureOpportunities } from "./FutureOpportunities";
 import { ProductLayersFlow } from "./ProductLayersFlow";
+import { ProcessSteps } from "./ProcessSteps";
 import { PersonaSplit } from "./PersonaSplit";
+import { isWorkSpacePersonaSection, WorkSpacePersonaCard } from "./WorkSpacePersonaCard";
+import { WorkSpaceTaskFlow } from "./WorkSpaceTaskFlow";
+import { PhoneFlowGallery } from "./PhoneFlowGallery";
 import { PhoneFrame, PhoneShowcase } from "./PhoneShowcase";
 import { AirportBrainstormGrid } from "./AirportBrainstormGrid";
 import { AirportJourneyMap } from "./AirportJourneyMap";
@@ -187,6 +191,7 @@ export function SectionRenderer({
 
     case "image": {
       const isPhone = section.layout === "phone";
+      const isSplit = section.layout === "split";
       const imageWidth = isPhone ? 390 : (section.width ?? 1400);
       const imageHeight = isPhone ? 844 : (section.height ?? 900);
       const imageSizes = isPhone
@@ -222,6 +227,8 @@ export function SectionRenderer({
           <SierraInteractionFlows theme={theme} />
         ) : section.artifact === "sdoh-persona" ? (
           <SdohPersonaCard theme={theme} />
+        ) : section.artifact === "work-space-task-flow" ? (
+          <WorkSpaceTaskFlow theme={theme} />
         ) : null;
 
       const imageEl = section.src ? (
@@ -230,6 +237,7 @@ export function SectionRenderer({
           alt={section.alt ?? ""}
           width={imageWidth}
           height={imageHeight}
+          unoptimized={section.layout === "full"}
           className={
             isPhone
               ? "mx-auto block h-auto w-full max-w-[260px] md:max-w-[280px]"
@@ -240,6 +248,29 @@ export function SectionRenderer({
       ) : null;
 
       const figureContent = artifactEl ?? imageEl;
+
+      const captionBlock =
+        (section.caption || section.bullets) && (
+          <>
+            {section.caption && (
+              <p className="cs-body-sm">{section.caption}</p>
+            )}
+            {section.bullets && section.bullets.length > 0 && (
+              <ul
+                className={`cs-body-sm space-y-2 ${section.caption ? "mt-4" : ""}`}
+              >
+                {section.bullets.map((bullet) => (
+                  <li key={bullet} className="flex gap-3">
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-ink/30" />
+                    <span>
+                      <LabeledBulletText text={bullet} />
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </>
+        );
 
       return (
         <section id={section.id} className="scroll-mt-28 py-8 md:py-12">
@@ -255,34 +286,57 @@ export function SectionRenderer({
                 height={imageHeight}
                 accent={accent}
               />
+            ) : isSplit && section.src && !artifactEl ? (
+              <>
+                {section.title && (
+                  <h2 className="cs-chapter-title mb-8 max-w-3xl md:mb-10">
+                    {section.title}
+                  </h2>
+                )}
+                {section.subtitle && (
+                  <p className="cs-body-sm mb-8 max-w-2xl">{section.subtitle}</p>
+                )}
+                <div
+                  className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,38%)] lg:items-center lg:gap-x-12 lg:gap-y-8"
+                >
+                  {captionBlock && (
+                    <div className="min-w-0 max-w-2xl lg:max-w-none lg:pr-4">
+                      {captionBlock}
+                    </div>
+                  )}
+                  <figure className="flex w-full justify-center lg:justify-end">
+                    <div
+                      className="relative aspect-[5/3] w-full max-w-md overflow-hidden rounded-2xl border border-border bg-[#F4F7F8] shadow-[0_8px_28px_-12px_rgba(15,23,42,0.12)] lg:max-w-none lg:w-full"
+                    >
+                      <Image
+                        src={section.src}
+                        alt={section.alt ?? ""}
+                        fill
+                        unoptimized
+                        className="object-cover object-[center_38%]"
+                        sizes="(max-width: 1024px) 100vw, 380px"
+                      />
+                    </div>
+                  </figure>
+                </div>
+              </>
             ) : (
               <>
                 {section.title && (
-                  <h2 className="cs-chapter-title mb-8 max-w-3xl">{section.title}</h2>
+                  <h2
+                    className={`cs-chapter-title max-w-3xl ${section.subtitle ? "" : "mb-8"}`}
+                  >
+                    {section.title}
+                  </h2>
+                )}
+                {section.subtitle && (
+                  <p className="cs-body-sm mb-8 mt-4 max-w-2xl">{section.subtitle}</p>
                 )}
                 {figureContent && (
                   <figure>
                     {figureContent}
-                    {(section.caption || section.bullets) && (
-                      <figcaption className="mt-4">
-                        {section.caption && (
-                          <p className="cs-body-sm">{section.caption}</p>
-                        )}
-                        {section.bullets && section.bullets.length > 0 && (
-                          <ul
-                            className={`cs-body-sm space-y-2 ${section.caption ? "mt-4" : ""}`}
-                          >
-                            {section.bullets.map((bullet) => (
-                              <li key={bullet} className="flex gap-3">
-                                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-ink/30" />
-                                <span>
-                                  <LabeledBulletText text={bullet} />
-                                </span>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </figcaption>
+                    {captionBlock && (
+                      <figcaption className="mt-4">{captionBlock}</figcaption>
                     )}
                   </figure>
                 )}
@@ -324,6 +378,32 @@ export function SectionRenderer({
           ? minRatio
           : undefined;
 
+      const isPhoneStrip =
+        section.device === "phone" && section.galleryLayout === "strip";
+      const isPhoneFlow =
+        section.device === "phone" &&
+        section.galleryLayout === "flow" &&
+        section.flowRows &&
+        section.flowRows.length > 0;
+
+      if (isPhoneFlow) {
+        return (
+          <section id={section.id} className="scroll-mt-28 py-10 md:py-14">
+            <Reveal delay={delay}>
+              {section.title && (
+                <h2 className="cs-chapter-title mb-3 max-w-3xl">
+                  {section.title}
+                </h2>
+              )}
+              {section.subtitle && (
+                <p className="cs-body-sm mb-8 max-w-2xl">{section.subtitle}</p>
+              )}
+              <PhoneFlowGallery rows={section.flowRows!} />
+            </Reveal>
+          </section>
+        );
+      }
+
       return (
         <section id={section.id} className="scroll-mt-28 py-10 md:py-14">
           <Reveal delay={delay}>
@@ -335,9 +415,11 @@ export function SectionRenderer({
             )}
             <div
               className={
-                section.device === "phone"
-                  ? "flex flex-wrap justify-center gap-8 md:gap-10"
-                  : `grid items-stretch gap-8 ${section.columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`
+                isPhoneStrip
+                  ? "flex gap-6 overflow-x-auto pb-2 md:gap-8"
+                  : section.device === "phone"
+                    ? "flex flex-wrap justify-center gap-8 md:gap-10"
+                    : `grid items-stretch gap-8 ${section.columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`
               }
             >
               {section.images.map((image) => {
@@ -349,7 +431,9 @@ export function SectionRenderer({
                   <figure
                     key={image.src}
                     className={`flex h-full flex-col ${
-                      section.device === "phone"
+                      isPhoneStrip
+                        ? "w-[220px] shrink-0 sm:w-[240px] md:w-[260px]"
+                        : section.device === "phone"
                         ? "w-full max-w-[260px] md:max-w-[280px]"
                         : image.wide
                           ? `mx-auto w-full max-w-3xl ${
@@ -505,7 +589,30 @@ export function SectionRenderer({
       return (
         <section id={section.id} className="scroll-mt-28 py-12 md:py-16">
           <Reveal delay={delay}>
-            {section.layout === "profile" && section.image ? (
+            {isWorkSpacePersonaSection(section) ? (
+              <WorkSpacePersonaCard
+                label={section.label}
+                quote={section.quote}
+                image={section.image!}
+                theme={theme}
+              />
+            ) : section.artifact === "sierra-decision-tree" ? (
+              <div>
+                <div className="max-w-xl">
+                  <h2 className="cs-chapter-title">{section.title}</h2>
+                  {section.label && (
+                    <p className="cs-meta-label mt-6" style={{ color: accent }}>
+                      {section.label}
+                    </p>
+                  )}
+                  <Prose>{section.content}</Prose>
+                  {section.bullets && <Bullets items={section.bullets} />}
+                </div>
+                <div className="mt-10 w-full">
+                  <SierraDecisionTree theme={theme} />
+                </div>
+              </div>
+            ) : section.layout === "profile" && section.image ? (
               <PersonaSplit
                 title={section.title}
                 label={section.label}
@@ -534,8 +641,6 @@ export function SectionRenderer({
                   <SystemsThinkingDiagram theme={theme} />
                 ) : section.artifact === "sierra-competitive-research" ? (
                   <SierraCompetitiveResearch theme={theme} />
-                ) : section.artifact === "sierra-decision-tree" ? (
-                  <SierraDecisionTree theme={theme} />
                 ) : (
                   section.image && (
                     <Image
@@ -647,10 +752,47 @@ export function SectionRenderer({
         </figure>
       );
 
+      const renderDecisionPointers = () => {
+        if (!section.pointers) {
+          return null;
+        }
+
+        const { title, items } = section.pointers;
+
+        return (
+          <div className="flex h-full flex-col justify-center md:px-2" key="decision-pointers">
+            <p className="text-sm font-semibold text-ink">{title}</p>
+            <ol className="mt-5 space-y-3">
+              {items.map((item, index) => (
+                <li
+                  key={item}
+                  className="flex gap-3 text-sm leading-snug text-ink-muted"
+                >
+                  <span
+                    className="shrink-0 font-semibold tabular-nums text-ink"
+                    style={{ color: accent }}
+                  >
+                    {index + 1}.
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        );
+      };
+
+      const useStackedGallery =
+        !isPhone &&
+        (decisionImages.length > 1 ||
+          (decisionImages.length === 1 && section.pointers));
+
       // Multi-screen decisions: copy on top, gallery below — avoids an empty text column
-      if (!isPhone && decisionImages.length > 1) {
+      if (useStackedGallery) {
         const hasLead =
-          decisionImages.length % 2 === 1 && decisionImages.length >= 3;
+          decisionImages.length % 2 === 1 &&
+          decisionImages.length >= 3 &&
+          !section.pointers;
         const lead = hasLead ? decisionImages[0] : null;
         const gridImages = hasLead ? decisionImages.slice(1) : decisionImages;
 
@@ -668,6 +810,7 @@ export function SectionRenderer({
                       "(max-width: 768px) 100vw, 50vw",
                     ),
                   )}
+                  {renderDecisionPointers()}
                 </div>
               </div>
             </Reveal>
@@ -731,32 +874,14 @@ export function SectionRenderer({
       return (
         <section id={section.id} className="scroll-mt-28 py-12 md:py-16">
           <Reveal delay={delay}>
-            <h2 className="cs-chapter-title">{section.title}</h2>
-            <ol className="mt-8 flex flex-wrap gap-2">
-              {section.steps.map((step, i) => (
-                <li
-                  key={step}
-                  className="rounded-full border border-border px-4 py-2 text-sm text-ink-muted"
-                >
-                  <span className="mr-2 font-semibold text-ink">{i + 1}.</span>
-                  {step}
-                </li>
-              ))}
-            </ol>
-            {section.image && (
-              <div className="mt-10">
-                <Image
-                  src={section.image.src}
-                  alt={section.image.alt}
-                  width={1200}
-                  height={700}
-                  className="block h-auto w-full"
-                />
-              </div>
-            )}
-            {section.footnote && (
-              <p className="cs-body-sm mt-6 max-w-2xl">{section.footnote}</p>
-            )}
+            <h2 className="cs-chapter-title max-w-3xl">{section.title}</h2>
+            <ProcessSteps
+              subtitle={section.subtitle}
+              steps={section.steps}
+              footnote={section.footnote}
+              image={section.image}
+              theme={theme}
+            />
           </Reveal>
         </section>
       );

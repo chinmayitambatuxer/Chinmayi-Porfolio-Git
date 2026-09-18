@@ -171,7 +171,7 @@ export function SierraDependencyMap({ theme }: SierraDependencyMapProps) {
       className="overflow-hidden rounded-2xl border"
       style={{
         borderColor: `${theme.accentMuted}88`,
-        backgroundColor: "#FFFBF8",
+        backgroundColor: theme.accentSoft,
       }}
       role="img"
       aria-label="System dependency map: passenger play request flows through the audio engine, then branches on whether driver media is playing into a priority check or direct playback, with a dashed dependency between outcomes"

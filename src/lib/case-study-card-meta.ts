@@ -6,11 +6,15 @@ type CardMeta = {
 };
 
 const domainMeta: Record<string, CardMeta> = {
-  "Automotive HMI": { label: "HMI Dashboard", color: "#7b7027" },
+  "Automotive HMI": { label: "HMI Dashboard", color: "#1e3a5f" },
   Healthcare: { label: "Healthcare", color: "#366b74" },
-  "Travel & Hospitality": { label: "Mobile Application", color: "#366b74" },
+  "Travel & Hospitality": { label: "Mobile Application", color: "#5a4234" },
+  "Travel / Airport Experience": {
+    label: "Travel / Airport Experience",
+    color: "#5a4234",
+  },
   Enterprise: { label: "Enterprise UX", color: "#a54711" },
-  Productivity: { label: "Mobile Application", color: "#3B5BA5" },
+  Productivity: { label: "Mobile Application", color: "#f1592a" },
 };
 
 export function getCaseStudyCardMeta(study: CaseStudy): CardMeta {

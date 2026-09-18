@@ -10,9 +10,9 @@ type Cell = { label: string; tone: "ok" | "no" | "warn" | "partial" | "shared" |
 const tones = {
   ok: { bg: "#E8F3EC", color: "#2F6B4F" },
   no: { bg: "#F8EDEA", color: "#A0453A" },
-  warn: { bg: "#FFF4ED", color: "#C45C26" },
-  partial: { bg: "#F3EEE8", color: "#8A7568" },
-  shared: { bg: "#FFF4ED", color: "#C45C26" },
+  warn: { bg: "#DBE8F5", color: "#1E3A5F" },
+  partial: { bg: "#E4EAF0", color: "#4D6278" },
+  shared: { bg: "#DBE8F5", color: "#1E3A5F" },
   priority: { bg: "#F8EDEA", color: "#A0453A" },
 } as const;
 

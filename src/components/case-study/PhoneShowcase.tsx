@@ -5,16 +5,29 @@ type PhoneFrameProps = {
   alt: string;
   width?: number;
   height?: number;
+  frameClassName?: string;
 };
 
-export function PhoneFrame({ src, alt, width = 390, height = 844 }: PhoneFrameProps) {
+export function PhoneFrame({
+  src,
+  alt,
+  width = 390,
+  height = 844,
+  frameClassName,
+}: PhoneFrameProps) {
   return (
-    <div className="mx-auto w-full max-w-[220px] shrink-0 sm:max-w-[250px] md:max-w-[280px]">
+    <div
+      className={
+        frameClassName ??
+        "mx-auto w-full max-w-[220px] shrink-0 sm:max-w-[250px] md:max-w-[280px]"
+      }
+    >
       <Image
         src={src}
         alt={alt}
         width={width}
         height={height}
+        unoptimized
         className="block h-auto w-full"
         sizes="280px"
       />

@@ -1,8 +1,21 @@
+import Image from "next/image";
 import type {
   BenchmarkData,
+  BenchmarkImageValue,
   BenchmarkValue,
   CaseStudyTheme,
 } from "@/types/case-study";
+
+function isBenchmarkImage(
+  value: BenchmarkValue,
+): value is BenchmarkImageValue {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "image" in value &&
+    "alt" in value
+  );
+}
 
 type EvBenchmarkTableProps = {
   data: BenchmarkData;
@@ -68,6 +81,19 @@ function BenchmarkCell({
 
   if (value === "-") {
     return <span className="text-sm text-ink-muted">—</span>;
+  }
+
+  if (isBenchmarkImage(value)) {
+    return (
+      <Image
+        src={value.image}
+        alt={value.alt}
+        width={88}
+        height={50}
+        className="mx-auto h-[50px] w-auto max-w-[88px] object-contain"
+        unoptimized
+      />
+    );
   }
 
   return <span className="text-sm leading-snug text-ink">{value}</span>;

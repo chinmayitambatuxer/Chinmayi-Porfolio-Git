@@ -30,7 +30,7 @@ export function SectionHeader({
             : `cs-meta-label ${dark ? "text-white/60" : ""}`
         }
       >
-        {index} / {label}
+        {isLanding ? label : `${index} / ${label}`}
       </p>
       <h2
         className={`mt-4 max-w-3xl text-balance ${

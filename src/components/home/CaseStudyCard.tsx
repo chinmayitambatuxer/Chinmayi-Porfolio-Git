@@ -20,7 +20,8 @@ export function CaseStudyCard({ study }: CaseStudyCardProps) {
           src={study.heroImage}
           alt={study.title}
           fill
-          className="object-cover object-[center_55%] transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transform-none"
+          unoptimized
+          className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transform-none"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>

@@ -135,14 +135,189 @@ function PremiumIcon({ color }: IconProps) {
   );
 }
 
+function CaptureStraightforwardIcon({ color }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden>
+      <rect
+        x="5"
+        y="4"
+        width="14"
+        height="16"
+        rx="2"
+        stroke={color}
+        strokeWidth="1.75"
+      />
+      <path
+        d="M9 8h6M9 12h5M9 16h3"
+        stroke={color}
+        strokeWidth="1.75"
+        strokeLinecap="round"
+      />
+      <path
+        d="M15 15l2 2 3-3.5"
+        stroke={color}
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ProgressVisibleIcon({ color }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden>
+      <rect
+        x="4"
+        y="6"
+        width="16"
+        height="4"
+        rx="2"
+        stroke={color}
+        strokeWidth="1.75"
+      />
+      <rect
+        x="4"
+        y="14"
+        width="16"
+        height="4"
+        rx="2"
+        stroke={color}
+        strokeWidth="1.75"
+        opacity="0.35"
+      />
+      <path
+        d="M7 8h7"
+        stroke={color}
+        strokeWidth="1.75"
+        strokeLinecap="round"
+      />
+      <path
+        d="M7 16h4"
+        stroke={color}
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        opacity="0.5"
+      />
+    </svg>
+  );
+}
+
+function OrganisedInfoIcon({ color }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden>
+      <rect
+        x="3"
+        y="5"
+        width="8"
+        height="6"
+        rx="1"
+        stroke={color}
+        strokeWidth="1.75"
+      />
+      <rect
+        x="3"
+        y="15"
+        width="8"
+        height="4"
+        rx="1"
+        stroke={color}
+        strokeWidth="1.75"
+      />
+      <rect
+        x="13"
+        y="5"
+        width="8"
+        height="14"
+        rx="1"
+        stroke={color}
+        strokeWidth="1.75"
+      />
+    </svg>
+  );
+}
+
+function WorkflowPathIcon({ color }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden>
+      <circle cx="6" cy="6" r="2.5" stroke={color} strokeWidth="1.75" />
+      <circle cx="18" cy="12" r="2.5" stroke={color} strokeWidth="1.75" />
+      <circle cx="8" cy="18" r="2.5" stroke={color} strokeWidth="1.75" />
+      <path
+        d="M8 8h5a3 3 0 0 1 3 3v1M10 15.5 6.5 17"
+        stroke={color}
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function MultiContextIcon({ color }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden>
+      <rect
+        x="4"
+        y="3"
+        width="7"
+        height="12"
+        rx="1.5"
+        stroke={color}
+        strokeWidth="1.75"
+      />
+      <rect
+        x="13"
+        y="6"
+        width="8"
+        height="14"
+        rx="1.5"
+        stroke={color}
+        strokeWidth="1.75"
+      />
+      <path
+        d="M7.5 13h.01"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function ConnectCommunicateIcon({ color }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden>
+      <path
+        d="M5 8h8v6H9l-2 2v-2H5V8Z"
+        stroke={color}
+        strokeWidth="1.75"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M13 10h6v5h-3l-1.5 1.5V15h-1.5"
+        stroke={color}
+        strokeWidth="1.75"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M11 11h2"
+        stroke={color}
+        strokeWidth="1.75"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 function DefaultIcon({ color }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden>
-      <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="1.5" />
+      <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="1.75" />
       <path
         d="M12 8v4l3 2"
         stroke={color}
-        strokeWidth="1.5"
+        strokeWidth="1.75"
         strokeLinecap="round"
       />
     </svg>
@@ -156,6 +331,12 @@ const iconByTitle: Record<string, ComponentType<IconProps>> = {
   "System Transparency": TransparencyIcon,
   Consistency: ConsistencyIcon,
   "Premium Experience": PremiumIcon,
+  "Make capture straightforward": CaptureStraightforwardIcon,
+  "Make progress visible": ProgressVisibleIcon,
+  "Keep information organised": OrganisedInfoIcon,
+  "Design around the workflow": WorkflowPathIcon,
+  "Support different contexts": MultiContextIcon,
+  "Connect capture to communication": ConnectCommunicateIcon,
 };
 
 export function PrincipleCards({ items, theme }: PrincipleCardsProps) {

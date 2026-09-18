@@ -19,9 +19,9 @@ export const tataSierraHmi: CaseStudy = {
   ],
   heroImage: img("shared-cockpit.png"),
   theme: {
-    accent: "#C45C26",
-    accentSoft: "#FFF4ED",
-    accentMuted: "#E8A87C",
+    accent: "#1E3A5F",
+    accentSoft: "#EEF3F8",
+    accentMuted: "#5B7C9D",
   },
   domain: "Automotive HMI",
   role: "Lead UX Designer (Passenger Display & Infotainment Experience)",
@@ -534,7 +534,6 @@ export const tataSierraHmi: CaseStudy = {
       content:
         "Defines how the system handles concurrent interaction across users, resources, and safety events — without asking users to resolve conflicts manually.",
       artifact: "sierra-decision-tree",
-      reverse: true,
     },
     {
       type: "image",
@@ -651,7 +650,9 @@ export const tataSierraHmi: CaseStudy = {
       ],
       src: img("sierra-slab-display.png"),
       alt: "Sierra slab display with three connected screens",
-      layout: "contained",
+      width: 1670,
+      height: 1252,
+      layout: "split",
     },
     {
       type: "visual-break",

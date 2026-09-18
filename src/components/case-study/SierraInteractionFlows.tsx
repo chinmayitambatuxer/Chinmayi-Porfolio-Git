@@ -152,14 +152,14 @@ function StepCard({ step, theme }: { step: FlowStep; theme: CaseStudyTheme }) {
   const bg = isEnd
     ? theme.accent
     : isInterrupt
-      ? "#F8EDEA"
+      ? "#E4EDF6"
       : isStart || isDecision
         ? theme.accentSoft
         : "#FFFFFF";
   const border = isEnd
     ? theme.accent
     : isInterrupt
-      ? "#E8B4A8"
+      ? "#9EB4CC"
       : `${theme.accentMuted}99`;
   const text = isEnd ? "#FFFFFF" : "#1A1A1A";
 
@@ -195,7 +195,7 @@ function StepCard({ step, theme }: { step: FlowStep; theme: CaseStudyTheme }) {
       {isInterrupt && (
         <p
           className="mt-1.5 text-center text-[0.625rem] font-bold uppercase tracking-wide lg:text-left"
-          style={{ color: "#A0453A" }}
+          style={{ color: theme.accent }}
         >
           Priority event
         </p>
@@ -210,7 +210,7 @@ function TaskFlow({ flow, theme }: { flow: Flow; theme: CaseStudyTheme }) {
       className="overflow-hidden rounded-2xl border"
       style={{
         borderColor: `${theme.accentMuted}99`,
-        backgroundColor: "#FFFBF8",
+        backgroundColor: theme.accentSoft,
       }}
     >
       <div

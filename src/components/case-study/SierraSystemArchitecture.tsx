@@ -90,7 +90,7 @@ export function SierraSystemArchitecture({ theme }: SierraSystemArchitectureProp
           className="w-full rounded-xl border px-4 py-3 text-center"
           style={{
             borderColor: theme.accent,
-            backgroundColor: "#FFF8F2",
+            backgroundColor: theme.accentSoft,
           }}
         >
           <p className="text-sm font-bold text-ink">Android System Layer</p>

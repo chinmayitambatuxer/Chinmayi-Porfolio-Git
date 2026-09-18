@@ -25,7 +25,7 @@ export const inVehicleExperience: CaseStudy = {
   domain: "Automotive HMI / EV",
   role: "UX / Product Designer",
   team: "Solo design — concept project",
-  timeline: "2022",
+  timeline: "2 MONTHS",
   platform: "In-vehicle infotainment touchscreen",
   overview:
     "As an EV's battery drops, the driver has to make increasingly important decisions: conserve energy, keep going, or find a charger. This concept explores how the infotainment system can make the driver aware of a low-battery situation and let them activate a Power Saving Mode with minimal effort while the car is moving.",
@@ -181,7 +181,25 @@ export const inVehicleExperience: CaseStudy = {
           },
           {
             label: "Icon",
-            values: [null, null, null, "-", null],
+            values: [
+              {
+                image: img("benchmark-icon-hyundai.png"),
+                alt: "Hyundai ECO+ mode control",
+              },
+              {
+                image: img("benchmark-icon-ford.png"),
+                alt: "Ford ECO mode button",
+              },
+              {
+                image: img("benchmark-icon-mg.png"),
+                alt: "MG ECO mode selector",
+              },
+              "-",
+              {
+                image: img("benchmark-icon-bmw.png"),
+                alt: "BMW ECO Pro mode button",
+              },
+            ],
           },
           {
             label: "Upfront low-battery mode button",
@@ -201,7 +219,7 @@ export const inVehicleExperience: CaseStudy = {
           },
           {
             label: "Extends range",
-            values: [true, null, true, true, true],
+            values: [true, false, true, true, true],
           },
           {
             label: "Driver is prompted to drive more efficiently",

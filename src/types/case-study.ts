@@ -10,8 +10,18 @@ export type Metric = {
   description?: string;
 };
 
+export type BenchmarkImageValue = {
+  image: string;
+  alt: string;
+};
+
 /** Cell value for benchmark matrix tables — true/false for yes/no icons. */
-export type BenchmarkValue = boolean | null | "-" | string;
+export type BenchmarkValue =
+  | boolean
+  | null
+  | "-"
+  | string
+  | BenchmarkImageValue;
 
 export type BenchmarkRow = {
   label: string;
@@ -64,6 +74,7 @@ export type CaseStudySection =
       id: string;
       navLabel?: string;
       title?: string;
+      subtitle?: string;
       caption?: string;
       bullets?: string[];
       takeaways?: {
@@ -75,7 +86,7 @@ export type CaseStudySection =
       alt?: string;
       width?: number;
       height?: number;
-      layout?: "full" | "contained" | "breakout" | "phone";
+      layout?: "full" | "contained" | "breakout" | "phone" | "split";
       artifact?:
         | "empathy-map"
         | "airport-persona"
@@ -89,7 +100,8 @@ export type CaseStudySection =
         | "sierra-ownership"
         | "sierra-audio-ownership"
         | "sierra-audio-priority"
-        | "sierra-flows";
+        | "sierra-flows"
+        | "work-space-task-flow";
     }
   | {
       type: "gallery";
@@ -108,6 +120,17 @@ export type CaseStudySection =
       }[];
       columns?: 2 | 3;
       device?: "phone";
+      galleryLayout?: "grid" | "strip" | "flow";
+      /** Staggered horizontal flows with arrows — matches Figma “Final Design” slides. */
+      flowRows?: {
+        screens: {
+          src: string;
+          alt: string;
+          caption: string;
+          width?: number;
+          height?: number;
+        }[];
+      }[];
     }
   | {
       type: "flow";
@@ -139,9 +162,11 @@ export type CaseStudySection =
         | "connected-cockpit"
         | "systems-thinking"
         | "sierra-competitive-research"
-        | "sierra-decision-tree";
+        | "sierra-decision-tree"
+        | "work-space-persona";
       layout?: "default" | "profile";
       reverse?: boolean;
+      quote?: string;
     }
   | {
       type: "table";
@@ -213,6 +238,10 @@ export type CaseStudySection =
         width?: number;
         height?: number;
       }[];
+      pointers?: {
+        title: string;
+        items: string[];
+      };
     }
   | {
       type: "comparison";
@@ -228,6 +257,7 @@ export type CaseStudySection =
       id: string;
       navLabel?: string;
       title: string;
+      subtitle?: string;
       steps: string[];
       footnote?: string;
       image?: { src: string; alt: string };
