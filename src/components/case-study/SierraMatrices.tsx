@@ -1,4 +1,5 @@
 import type { CaseStudyTheme } from "@/types/case-study";
+import { MobileHorizontalScroll } from "./MobileHorizontalScroll";
 
 type SierraMatricesProps = {
   theme: CaseStudyTheme;
@@ -175,7 +176,7 @@ const audioOwnership = {
 export function SierraMatrices({ theme, variant }: SierraMatricesProps) {
   if (variant === "vehicle-state") {
     return (
-      <div className="overflow-x-auto">
+      <MobileHorizontalScroll accent={theme.accent}>
         <table className="min-w-[880px] w-full border-collapse overflow-hidden rounded-2xl border text-left"
           style={{ borderColor: theme.accentMuted }}
         >
@@ -201,13 +202,13 @@ export function SierraMatrices({ theme, variant }: SierraMatricesProps) {
             ))}
           </tbody>
         </table>
-      </div>
+      </MobileHorizontalScroll>
     );
   }
 
   if (variant === "ownership") {
     return (
-      <div className="overflow-x-auto">
+      <MobileHorizontalScroll accent={theme.accent}>
         <table className="min-w-[920px] w-full border-collapse overflow-hidden rounded-2xl border text-left"
           style={{ borderColor: theme.accentMuted }}
         >
@@ -231,12 +232,13 @@ export function SierraMatrices({ theme, variant }: SierraMatricesProps) {
             ))}
           </tbody>
         </table>
-      </div>
+      </MobileHorizontalScroll>
     );
   }
 
   return (
-    <div className="overflow-x-auto">
+    <>
+      <MobileHorizontalScroll accent={theme.accent}>
       <table className="min-w-[880px] w-full border-collapse overflow-hidden rounded-2xl border text-left"
         style={{ borderColor: theme.accentMuted }}
       >
@@ -259,12 +261,13 @@ export function SierraMatrices({ theme, variant }: SierraMatricesProps) {
           ))}
         </tbody>
       </table>
+      </MobileHorizontalScroll>
       <p
         className="mt-4 rounded-xl border px-4 py-3 text-sm font-medium"
         style={{ borderColor: theme.accentMuted, backgroundColor: theme.accentSoft, color: theme.accent }}
       >
         Key principle: Audio focus always respects context, priority, and user intention.
       </p>
-    </div>
+    </>
   );
 }

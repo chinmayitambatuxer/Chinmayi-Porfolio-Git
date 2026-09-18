@@ -1,4 +1,5 @@
 import type { CaseStudyTheme } from "@/types/case-study";
+import { MobileHorizontalScroll } from "./MobileHorizontalScroll";
 
 type ThemedDataTableProps = {
   headers: string[];
@@ -19,7 +20,7 @@ export function ThemedDataTable({
         borderColor: theme.accentMuted,
       }}
     >
-      <div className="overflow-x-auto">
+      <MobileHorizontalScroll accent={theme.accent}>
         <table
           className={`w-full text-left text-sm ${
             headers.length > 2 ? "min-w-[520px]" : ""
@@ -70,7 +71,7 @@ export function ThemedDataTable({
             ))}
           </tbody>
         </table>
-      </div>
+      </MobileHorizontalScroll>
     </div>
   );
 }

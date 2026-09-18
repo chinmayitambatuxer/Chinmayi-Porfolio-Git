@@ -51,7 +51,7 @@ export function BackToTop({ accent, accentSoft }: BackToTopProps) {
       type="button"
       onClick={scrollToTop}
       aria-label="Back to top"
-      className={`fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full border shadow-[0_10px_28px_-10px_rgba(0,0,0,0.22)] transition-[opacity,transform] duration-200 hover:scale-[1.03] focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transform-none motion-reduce:transition-none ${
+      className={`fixed z-40 flex items-center justify-center rounded-full border shadow-[0_10px_28px_-10px_rgba(0,0,0,0.22)] transition-[opacity,transform] duration-200 hover:scale-[1.03] focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transform-none motion-reduce:transition-none bottom-6 right-6 h-11 w-11 max-md:bottom-[max(1rem,env(safe-area-inset-bottom))] max-md:right-4 max-md:h-10 max-md:w-10 max-md:shadow-[0_8px_20px_-8px_rgba(0,0,0,0.25)] md:bottom-6 md:right-6 md:h-11 md:w-11 ${
         visible
           ? "pointer-events-auto opacity-100"
           : "pointer-events-none opacity-0"

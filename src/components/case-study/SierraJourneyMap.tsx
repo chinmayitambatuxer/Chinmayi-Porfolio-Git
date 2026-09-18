@@ -1,4 +1,5 @@
 import type { CaseStudyTheme } from "@/types/case-study";
+import { MobileHorizontalScroll } from "./MobileHorizontalScroll";
 
 type SierraJourneyMapProps = {
   theme: CaseStudyTheme;
@@ -257,7 +258,7 @@ export function SierraJourneyMap({ theme }: SierraJourneyMapProps) {
   };
 
   return (
-    <div className="overflow-x-auto">
+    <MobileHorizontalScroll accent={theme.accent}>
       <div
         className="min-w-[1240px] rounded-2xl border"
         style={{ borderColor: theme.accentMuted }}
@@ -384,6 +385,6 @@ export function SierraJourneyMap({ theme }: SierraJourneyMapProps) {
           </div>
         </div>
       </div>
-    </div>
+    </MobileHorizontalScroll>
   );
 }

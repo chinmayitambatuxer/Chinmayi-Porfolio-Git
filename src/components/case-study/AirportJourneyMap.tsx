@@ -1,4 +1,5 @@
 import type { CaseStudyTheme } from "@/types/case-study";
+import { MobileHorizontalScroll } from "./MobileHorizontalScroll";
 
 type AirportJourneyMapProps = {
   theme: CaseStudyTheme;
@@ -81,7 +82,7 @@ const rows: { label: string; cells: string[][] }[] = [
 
 export function AirportJourneyMap({ theme }: AirportJourneyMapProps) {
   return (
-    <div className="overflow-x-auto">
+    <MobileHorizontalScroll accent={theme.accent}>
       <div className="min-w-[880px]">
         <div
           className="grid grid-cols-5 gap-2"
@@ -131,6 +132,6 @@ export function AirportJourneyMap({ theme }: AirportJourneyMapProps) {
           </div>
         ))}
       </div>
-    </div>
+    </MobileHorizontalScroll>
   );
 }

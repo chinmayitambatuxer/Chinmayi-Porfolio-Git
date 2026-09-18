@@ -250,6 +250,46 @@ body {
   color: var(--ink);
 }
 
+@media (max-width: 767px) {
+  .case-study {
+    /* Room for sticky phase nav (incl. “You are in” row on small screens). */
+    scroll-padding-top: 4.75rem;
+  }
+
+  .case-study .scroll-mt-28,
+  .case-study .scroll-mt-32 {
+    scroll-margin-top: 4.75rem;
+  }
+
+  .case-study .cs-page-content {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .case-study .gallery-image-equalized,
+  .case-study .gallery-image-equalized__img {
+    height: auto !important;
+    max-width: 100%;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .case-study .gallery-image-equalized {
+    aspect-ratio: var(--gallery-aspect);
+    height: 100%;
+    width: 100%;
+  }
+
+  .case-study .gallery-image-equalized__img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
 .case-study figure {
   margin: 0;
 }

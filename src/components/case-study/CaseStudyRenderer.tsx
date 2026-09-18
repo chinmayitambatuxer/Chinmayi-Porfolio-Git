@@ -43,7 +43,7 @@ export function CaseStudyRenderer({ study }: CaseStudyRendererProps) {
       <OutcomeMetrics study={study} />
       <TimelineNav sections={study.sections} accent={study.theme.accent} />
 
-      <div className="mx-auto max-w-[var(--cs-page)] px-6 pb-24 pt-8 md:px-10">
+      <div className="cs-page-content mx-auto max-w-[var(--cs-page)] px-6 pb-24 pt-8 md:px-10">
         {study.sections.map((section, index) => {
           const phaseIndex =
             section.type === "phase"

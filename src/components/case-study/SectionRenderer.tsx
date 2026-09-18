@@ -1,5 +1,7 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import type { CaseStudySection, CaseStudyTheme } from "@/types/case-study";
+import { phaseHeading } from "@/lib/phase-label";
 import { Reveal } from "@/components/motion/Reveal";
 import { ConnectedCockpitDiagram } from "./ConnectedCockpitDiagram";
 import { SystemsThinkingDiagram } from "./SystemsThinkingDiagram";
@@ -21,6 +23,7 @@ import { PersonaSplit } from "./PersonaSplit";
 import { isWorkSpacePersonaSection, WorkSpacePersonaCard } from "./WorkSpacePersonaCard";
 import { WorkSpaceTaskFlow } from "./WorkSpaceTaskFlow";
 import { PhoneFlowGallery } from "./PhoneFlowGallery";
+import { MobileHorizontalScroll } from "./MobileHorizontalScroll";
 import { PhoneFrame, PhoneShowcase } from "./PhoneShowcase";
 import { AirportBrainstormGrid } from "./AirportBrainstormGrid";
 import { AirportJourneyMap } from "./AirportJourneyMap";
@@ -108,11 +111,8 @@ export function SectionRenderer({
           className="scroll-mt-32 border-t border-border pt-20 first:border-t-0 first:pt-8 md:pt-24"
         >
           <Reveal delay={delay}>
-            <p className="cs-timeline-index">
-              {phaseIndex} /{" "}
-              <span className="text-ink-muted">
-                {section.phase.replace(/^\d+\s*—\s*/, "")}
-              </span>
+            <p className="cs-timeline-index text-ink-muted">
+              {phaseHeading(section.phase)}
             </p>
             {section.title && (
               <h2 className="cs-chapter-title mt-6 max-w-3xl text-balance">
@@ -333,7 +333,7 @@ export function SectionRenderer({
                   <p className="cs-body-sm mb-8 mt-4 max-w-2xl">{section.subtitle}</p>
                 )}
                 {figureContent && (
-                  <figure>
+                  <figure className="min-w-0 max-w-full">
                     {figureContent}
                     {captionBlock && (
                       <figcaption className="mt-4">{captionBlock}</figcaption>
@@ -413,13 +413,58 @@ export function SectionRenderer({
             {section.subtitle && (
               <p className="cs-body-sm mb-8 max-w-2xl">{section.subtitle}</p>
             )}
+            {isPhoneStrip ? (
+              <MobileHorizontalScroll accent={accent}>
+                <div className="flex gap-6 pb-2 md:gap-8">
+                  {section.images.map((image) => (
+                      <figure
+                        key={image.src}
+                        className="flex h-full w-[220px] shrink-0 flex-col sm:w-[240px] md:w-[260px]"
+                      >
+                        <PhoneFrame
+                          src={image.src}
+                          alt={image.alt}
+                          width={image.width ?? 390}
+                          height={image.height ?? 844}
+                        />
+                        {(image.caption || image.bullets) && (
+                          <figcaption className="mt-4">
+                            {image.caption && (
+                              <p className="text-sm font-semibold text-ink">
+                                {image.caption}
+                              </p>
+                            )}
+                            {image.bullets && image.bullets.length > 0 && (
+                              <ul
+                                className={`space-y-2 ${image.caption ? "mt-3" : ""}`}
+                              >
+                                {image.bullets.map((bullet) => (
+                                  <li
+                                    key={bullet}
+                                    className="cs-body-sm flex gap-3 text-ink-muted"
+                                  >
+                                    <span
+                                      className="mt-2.5 h-1 w-1 shrink-0 rounded-full"
+                                      style={{ backgroundColor: accent }}
+                                      aria-hidden
+                                    />
+                                    {bullet}
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </figcaption>
+                        )}
+                      </figure>
+                  ))}
+                </div>
+              </MobileHorizontalScroll>
+            ) : (
             <div
               className={
-                isPhoneStrip
-                  ? "flex gap-6 overflow-x-auto pb-2 md:gap-8"
-                  : section.device === "phone"
-                    ? "flex flex-wrap justify-center gap-8 md:gap-10"
-                    : `grid items-stretch gap-8 ${section.columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`
+                section.device === "phone"
+                  ? "flex flex-wrap justify-center gap-8 md:gap-10"
+                  : `grid min-w-0 items-stretch gap-8 ${section.columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`
               }
             >
               {section.images.map((image) => {
@@ -430,10 +475,8 @@ export function SectionRenderer({
                 return (
                   <figure
                     key={image.src}
-                    className={`flex h-full flex-col ${
-                      isPhoneStrip
-                        ? "w-[220px] shrink-0 sm:w-[240px] md:w-[260px]"
-                        : section.device === "phone"
+                    className={`flex min-w-0 h-full flex-col ${
+                      section.device === "phone"
                         ? "w-full max-w-[260px] md:max-w-[280px]"
                         : image.wide
                           ? `mx-auto w-full max-w-3xl ${
@@ -453,12 +496,16 @@ export function SectionRenderer({
                       />
                     ) : (
                       <div
-                        className={`overflow-hidden rounded-2xl border border-border bg-[#F4F7F8] shadow-[0_1px_2px_rgba(15,23,42,0.04)] ${
-                          useEqualHeight ? "h-full w-full" : ""
+                        className={`w-full max-w-full overflow-hidden rounded-2xl border border-border bg-[#F4F7F8] shadow-[0_1px_2px_rgba(15,23,42,0.04)] ${
+                          useEqualHeight
+                            ? "gallery-image-equalized md:h-full md:w-full"
+                            : ""
                         }`}
                         style={
                           useEqualHeight
-                            ? { aspectRatio: String(sharedAspectRatio) }
+                            ? ({
+                                "--gallery-aspect": String(sharedAspectRatio),
+                              } as CSSProperties)
                             : undefined
                         }
                       >
@@ -470,10 +517,10 @@ export function SectionRenderer({
                           unoptimized
                           className={
                             useEqualHeight
-                              ? "block h-full w-full object-cover"
-                              : "block h-auto w-full"
+                              ? "gallery-image-equalized__img block h-auto w-full max-w-full md:h-full md:w-full"
+                              : "block h-auto w-full max-w-full"
                           }
-                          sizes="(max-width: 900px) 100vw, 560px"
+                          sizes="(max-width: 767px) 100vw, (max-width: 1200px) 50vw, 560px"
                         />
                       </div>
                     )}
@@ -509,6 +556,7 @@ export function SectionRenderer({
                 );
               })}
             </div>
+            )}
           </Reveal>
         </section>
       );
@@ -912,7 +960,7 @@ export function SectionRenderer({
                 theme={theme}
               />
             ) : (
-              <div className="mt-10 overflow-x-auto">
+              <MobileHorizontalScroll accent={accent} className="mt-10">
                 <table className="w-full min-w-[520px] text-left text-sm">
                   <thead>
                     <tr className="border-b border-border">
@@ -938,7 +986,7 @@ export function SectionRenderer({
                     ))}
                   </tbody>
                 </table>
-              </div>
+              </MobileHorizontalScroll>
             )}
             {section.takeaways && (
               <ImageTakeaways

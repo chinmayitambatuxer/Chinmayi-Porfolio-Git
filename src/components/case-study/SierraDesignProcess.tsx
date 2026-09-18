@@ -1,4 +1,5 @@
 import type { CaseStudyTheme } from "@/types/case-study";
+import { MobileHorizontalScroll } from "./MobileHorizontalScroll";
 
 type SierraDesignProcessProps = {
   theme: CaseStudyTheme;
@@ -39,7 +40,7 @@ const steps = [
 
 export function SierraDesignProcess({ theme }: SierraDesignProcessProps) {
   return (
-    <div className="overflow-x-auto">
+    <MobileHorizontalScroll accent={theme.accent}>
       <div className="flex min-w-[920px] items-stretch gap-3">
         {steps.map((step, i) => (
           <div key={step.number} className="flex flex-1 items-stretch gap-3">
@@ -85,6 +86,6 @@ export function SierraDesignProcess({ theme }: SierraDesignProcessProps) {
           </div>
         ))}
       </div>
-    </div>
+    </MobileHorizontalScroll>
   );
 }
