@@ -57,6 +57,7 @@ export function LandingHero() {
                   src={site.profileImage}
                   alt={site.name}
                   fill
+                  unoptimized
                   className="object-cover"
                   sizes="(max-width: 1024px) 80vw, 400px"
                   priority
