@@ -264,7 +264,15 @@ body {
   .case-study .cs-page-content {
     min-width: 0;
     max-width: 100%;
-    overflow-x: clip;
+    overflow-x: visible;
+  }
+
+  /* Edge-to-edge scroll within the case study column (matches px-6) */
+  .case-study .cs-mobile-scroll-bleed {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .case-study .gallery-image-equalized,

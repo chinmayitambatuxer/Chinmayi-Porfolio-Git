@@ -43,7 +43,7 @@ type TimelineNavProps = {
 export function TimelineNav({ sections, accent }: TimelineNavProps) {
   const items = useMemo(() => getTimelineItems(sections), [sections]);
   const [activeId, setActiveId] = useState(items[0]?.id ?? "");
-  const listRef = useRef<HTMLUListElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
 
   const resolveActiveId = useCallback(() => {
@@ -86,16 +86,18 @@ export function TimelineNav({ sections, accent }: TimelineNavProps) {
   }, [resolveActiveId]);
 
   useEffect(() => {
-    const list = listRef.current;
-    if (!list || !activeId) return;
+    const scroller = scrollRef.current;
+    if (!scroller || !activeId) return;
 
-    const link = list.querySelector<HTMLAnchorElement>(`a[href="#${activeId}"]`);
+    const link = scroller.querySelector<HTMLAnchorElement>(
+      `a[href="#${activeId}"]`,
+    );
     if (!link) return;
 
     const targetLeft =
-      link.offsetLeft - list.clientWidth / 2 + link.offsetWidth / 2;
+      link.offsetLeft - scroller.clientWidth / 2 + link.offsetWidth / 2;
 
-    list.scrollTo({
+    scroller.scrollTo({
       left: Math.max(0, targetLeft),
       behavior: "smooth",
     });
@@ -135,35 +137,34 @@ export function TimelineNav({ sections, accent }: TimelineNavProps) {
         <div className="flex items-center gap-3 md:gap-4">
           <p className="cs-meta-label hidden shrink-0 sm:block">Timeline</p>
           <div className="relative min-w-0 flex-1">
-            <ul
-              ref={listRef}
-              className="flex gap-2 overflow-x-auto overscroll-x-contain scroll-smooth pb-0.5 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] md:gap-3 [&::-webkit-scrollbar]:hidden"
-            >
-              {items.map((item) => {
-                const isActive = activeId === item.id;
-                return (
-                  <li key={item.id} className="shrink-0">
-                    <a
-                      href={`#${item.id}`}
-                      onClick={(event) => scrollToSection(event, item.id)}
-                      aria-current={isActive ? "location" : undefined}
-                      className={`whitespace-nowrap rounded-full border px-3 py-1.5 text-sm transition-colors active:scale-[0.98] md:px-4 md:py-2 ${
-                        isActive
-                          ? "border-transparent bg-[var(--accent-soft)] font-semibold text-ink shadow-[inset_0_0_0_1px_rgba(0,0,0,0.04)]"
-                          : "border-border text-ink-muted hover:border-ink/20 hover:text-ink"
-                      }`}
-                      style={isActive ? { color: accent } : undefined}
-                    >
-                      {item.pillLabel}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
             <div
-              className="pointer-events-none absolute inset-y-0 right-0 w-7 bg-gradient-to-l from-white/95 to-transparent md:hidden"
-              aria-hidden
-            />
+              ref={scrollRef}
+              className="overflow-x-auto overflow-y-visible overscroll-x-contain scroll-smooth [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              style={{ scrollPaddingInline: "0.5rem" }}
+            >
+              <ul className="flex w-max min-w-full gap-2 py-0.5 pr-10 md:gap-3 md:pr-12">
+                {items.map((item) => {
+                  const isActive = activeId === item.id;
+                  return (
+                    <li key={item.id} className="shrink-0 py-0.5">
+                      <a
+                        href={`#${item.id}`}
+                        onClick={(event) => scrollToSection(event, item.id)}
+                        aria-current={isActive ? "location" : undefined}
+                        className={`inline-flex max-w-none items-center whitespace-nowrap rounded-full border px-3 py-2 text-sm leading-snug transition-colors md:px-4 md:py-2 ${
+                          isActive
+                            ? "border-transparent bg-[var(--accent-soft)] font-semibold text-ink shadow-[inset_0_0_0_1px_rgba(0,0,0,0.04)]"
+                            : "border-border text-ink-muted hover:border-ink/20 hover:text-ink"
+                        }`}
+                        style={isActive ? { color: accent } : undefined}
+                      >
+                        {item.pillLabel}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
           <Link
             href="/#work"

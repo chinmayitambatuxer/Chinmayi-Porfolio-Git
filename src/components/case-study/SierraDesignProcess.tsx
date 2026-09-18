@@ -41,11 +41,14 @@ const steps = [
 export function SierraDesignProcess({ theme }: SierraDesignProcessProps) {
   return (
     <MobileHorizontalScroll accent={theme.accent}>
-      <div className="flex min-w-[920px] items-stretch gap-3">
+      <div className="flex w-max items-stretch gap-3 lg:min-w-[920px] lg:w-full">
         {steps.map((step, i) => (
-          <div key={step.number} className="flex flex-1 items-stretch gap-3">
+          <div
+            key={step.number}
+            className="flex w-[min(78vw,17.5rem)] shrink-0 snap-start items-stretch gap-3 max-lg:last:pr-1 lg:w-auto lg:min-w-0 lg:flex-1 lg:shrink"
+          >
             <div
-              className="flex w-full flex-col rounded-2xl border p-4"
+              className="flex w-full min-w-0 flex-col rounded-2xl border p-4"
               style={{
                 backgroundColor: theme.accent,
                 borderColor: theme.accentMuted,
@@ -55,24 +58,26 @@ export function SierraDesignProcess({ theme }: SierraDesignProcessProps) {
                 {step.number}
               </p>
               <h3 className="mt-2 text-base font-bold text-white">{step.title}</h3>
-              <p className="mt-1 text-[0.75rem] text-white/75">{step.subtitle}</p>
+              <p className="mt-1 text-[0.75rem] leading-snug text-white/75">
+                {step.subtitle}
+              </p>
               <ul className="mt-4 space-y-2">
                 {step.items.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2 text-[0.75rem] text-white/90"
+                    className="flex items-start gap-2 text-[0.75rem] leading-snug text-white/90"
                   >
                     <span
                       className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-white/80"
                       aria-hidden
                     />
-                    {item}
+                    <span className="min-w-0 break-words">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
             {i < steps.length - 1 && (
-              <div className="flex items-center" aria-hidden>
+              <div className="flex shrink-0 items-center max-lg:hidden" aria-hidden>
                 <span
                   className="h-px w-3"
                   style={{ backgroundColor: theme.accentMuted }}

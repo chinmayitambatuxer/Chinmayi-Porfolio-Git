@@ -12,16 +12,29 @@ type MobileHorizontalScrollProps = {
   children: ReactNode;
   className?: string;
   accent?: string;
+  /** Pull scroll area into page gutters on mobile (default true). */
+  bleed?: boolean;
+  /** Fade the right edge when more content is off-screen (contained layouts). */
+  edgeFade?: boolean;
+  /** Color the fade blends into (e.g. table card background). */
+  edgeFadeColor?: string;
+  /** Scroll-snap on mobile (default true; disable for tables). */
+  snap?: boolean;
 };
 
 export function MobileHorizontalScroll({
   children,
   className = "",
   accent,
+  bleed = true,
+  edgeFade = false,
+  edgeFadeColor = "#ffffff",
+  snap = true,
 }: MobileHorizontalScrollProps) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
   const [scrollable, setScrollable] = useState(false);
+  const [atEnd, setAtEnd] = useState(false);
 
   const updateProgress = useCallback(() => {
     const el = scrollerRef.current;
@@ -31,11 +44,14 @@ export function MobileHorizontalScroll({
     if (maxScroll <= 2) {
       setScrollable(false);
       setProgress(0);
+      setAtEnd(true);
       return;
     }
 
     setScrollable(true);
-    setProgress(Math.min(100, (el.scrollLeft / maxScroll) * 100));
+    const ratio = el.scrollLeft / maxScroll;
+    setProgress(Math.min(100, ratio * 100));
+    setAtEnd(el.scrollLeft >= maxScroll - 2);
   }, []);
 
   useEffect(() => {
@@ -58,23 +74,37 @@ export function MobileHorizontalScroll({
   }, [updateProgress]);
 
   const fillColor = accent ?? "#191d21";
+  const showRightFade = edgeFade && scrollable && !atEnd;
+
+  const snapClasses = snap
+    ? "max-lg:snap-x max-lg:snap-mandatory max-lg:scroll-px-6"
+    : "";
 
   return (
-    <div className={`relative ${className}`}>
-      <div
-        ref={scrollerRef}
-        onScroll={updateProgress}
-        className="overflow-x-auto max-lg:-mx-6 max-lg:px-6 max-lg:pb-1 max-lg:overscroll-x-contain max-lg:scroll-smooth max-lg:[-webkit-overflow-scrolling:touch] max-lg:[scrollbar-width:none] max-lg:[&::-webkit-scrollbar]:hidden lg:pb-0"
-      >
-        {children}
+    <div
+      className={`${bleed ? "max-lg:cs-mobile-scroll-bleed" : ""} ${className}`}
+    >
+      <div className="relative">
+        <div
+          ref={scrollerRef}
+          onScroll={updateProgress}
+          className={`overflow-x-auto max-lg:pb-1 max-lg:overscroll-x-contain max-lg:scroll-smooth max-lg:[-webkit-overflow-scrolling:touch] max-lg:[scrollbar-width:none] max-lg:[&::-webkit-scrollbar]:hidden lg:pb-0 ${snapClasses}`}
+        >
+          {children}
+        </div>
+        {showRightFade && (
+          <div
+            className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-10 max-lg:block lg:hidden"
+            style={{
+              background: `linear-gradient(to left, ${edgeFadeColor} 20%, ${edgeFadeColor}99 45%, transparent)`,
+            }}
+            aria-hidden
+          />
+        )}
       </div>
-      <div
-        className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-8 bg-gradient-to-l from-white via-white/85 to-transparent max-lg:block lg:hidden"
-        aria-hidden
-      />
       {scrollable && (
         <div
-          className="mt-3 hidden px-0 max-lg:block lg:hidden"
+          className="mt-3 hidden max-lg:block lg:hidden"
           role="progressbar"
           aria-valuemin={0}
           aria-valuemax={100}

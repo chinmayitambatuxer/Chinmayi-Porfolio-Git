@@ -200,7 +200,7 @@ export const tataSierraHmi: CaseStudy = {
       id: "stakeholders",
       title: "Understanding the Stakeholders",
       subtitle: "Multiple stakeholders whose needs often conflicted.",
-      layout: "styled",
+      layout: "cards",
       headers: ["Stakeholder", "Primary Goal", "UX Consideration"],
       rows: [
         ["Driver", "Safety and focus", "Lowest possible distraction"],

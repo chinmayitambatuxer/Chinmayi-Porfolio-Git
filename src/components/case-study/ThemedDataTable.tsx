@@ -20,7 +20,13 @@ export function ThemedDataTable({
         borderColor: theme.accentMuted,
       }}
     >
-      <MobileHorizontalScroll accent={theme.accent}>
+      <MobileHorizontalScroll
+        accent={theme.accent}
+        bleed={false}
+        edgeFade
+        edgeFadeColor={theme.accentSoft}
+        snap={false}
+      >
         <table
           className={`w-full text-left text-sm ${
             headers.length > 2 ? "min-w-[520px]" : ""
