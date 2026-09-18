@@ -3,11 +3,10 @@ import type { CaseStudy } from "@/types/case-study";
 import { Reveal } from "@/components/motion/Reveal";
 
 type NextProjectProps = {
-  current: CaseStudy;
   next: CaseStudy;
 };
 
-export function NextProject({ current, next }: NextProjectProps) {
+export function NextProject({ next }: NextProjectProps) {
   return (
     <section className="mt-20 border-t border-border pt-16 md:pt-20">
       <Reveal>
@@ -18,7 +17,7 @@ export function NextProject({ current, next }: NextProjectProps) {
         >
           <h2
             className="cs-section-title transition-opacity group-hover:opacity-70"
-            style={{ color: current.theme.accent }}
+            style={{ color: next.theme.accent }}
           >
             {next.title} →
           </h2>

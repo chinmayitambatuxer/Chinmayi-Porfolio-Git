@@ -3,20 +3,28 @@ import type { CaseStudy } from "@/types/case-study";
 type CardMeta = {
   label: string;
   color: string;
+  accentSoft: string;
+  accentMuted: string;
 };
 
-const domainMeta: Record<string, CardMeta> = {
-  "Automotive HMI": { label: "HMI Dashboard", color: "#1e3a5f" },
-  Healthcare: { label: "Healthcare", color: "#366b74" },
-  "Travel & Hospitality": { label: "Mobile Application", color: "#5a4234" },
-  "Travel / Airport Experience": {
-    label: "Travel / Airport Experience",
-    color: "#5a4234",
-  },
-  Enterprise: { label: "Enterprise UX", color: "#a54711" },
-  Productivity: { label: "Mobile Application", color: "#f1592a" },
+const domainLabels: Record<string, string> = {
+  "Automotive HMI": "HMI Dashboard",
+  "Automotive HMI / EV": "Automotive HMI / EV",
+  Healthcare: "Healthcare",
+  "Healthcare / Clinical workflow": "Healthcare / Clinical workflow",
+  "Travel & Hospitality": "Mobile Application",
+  "Travel / Airport Experience": "Travel / Airport Experience",
+  Enterprise: "Enterprise UX",
+  Productivity: "Mobile Application",
 };
 
 export function getCaseStudyCardMeta(study: CaseStudy): CardMeta {
-  return domainMeta[study.domain] ?? { label: study.domain, color: "#191d21" };
+  const { accent, accentSoft, accentMuted } = study.theme;
+
+  return {
+    label: domainLabels[study.domain] ?? study.domain,
+    color: accent,
+    accentSoft,
+    accentMuted,
+  };
 }

@@ -11,6 +11,7 @@ import { TimelineNav } from "./TimelineSidebar";
 import { SectionRenderer } from "./SectionRenderer";
 import { ReflectionBlock } from "./ReflectionBlock";
 import { NextProject } from "./NextProject";
+import { BackToTop } from "./BackToTop";
 
 type CaseStudyRendererProps = {
   study: CaseStudy;
@@ -33,6 +34,10 @@ export function CaseStudyRenderer({ study }: CaseStudyRendererProps) {
       }
     >
       <ScrollProgress accent={study.theme.accent} />
+      <BackToTop
+        accent={study.theme.accent}
+        accentSoft={study.theme.accentSoft}
+      />
       <CaseStudyHero study={study} />
       <GoalChallengeOutcome study={study} />
       <OutcomeMetrics study={study} />
@@ -58,7 +63,7 @@ export function CaseStudyRenderer({ study }: CaseStudyRendererProps) {
           );
         })}
         <ReflectionBlock study={study} />
-        <NextProject current={study} next={nextStudy} />
+        <NextProject next={nextStudy} />
       </div>
     </article>
   );

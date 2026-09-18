@@ -41,9 +41,10 @@ export const site = {
   profileImage: "/images/profile.jpg",
   aboutPortraitImage: "/images/about-portrait.png",
   social: {
-    linkedin: "https://www.linkedin.com/in/chinmayinegi",
-    behance: "https://www.behance.net/chinmayinegi",
-    instagram: "https://www.instagram.com/chinmayinegi",
+    linkedin: "https://www.linkedin.com/in/cuxui/",
+    behance: "https://www.behance.net/C_UXUI",
+    instagram:
+      "https://www.instagram.com/cheena1017?stkn=YTNxdW5uanlmbzVn&utm_source=qr",
   },
   summary:
     "I'm a passionate, detail-oriented Product Designer with over 5 years of experience in UX design. I specialize in creating intuitive, user-centered digital experiences through design thinking — with a focus on accessibility, inclusiveness, and usability across automotive, healthcare, and e-commerce.",

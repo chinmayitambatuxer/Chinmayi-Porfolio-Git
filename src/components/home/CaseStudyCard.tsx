@@ -8,7 +8,7 @@ type CaseStudyCardProps = {
 };
 
 export function CaseStudyCard({ study }: CaseStudyCardProps) {
-  const { label, color } = getCaseStudyCardMeta(study);
+  const { label, color, accentSoft, accentMuted } = getCaseStudyCardMeta(study);
 
   return (
     <Link
@@ -58,7 +58,15 @@ export function CaseStudyCard({ study }: CaseStudyCardProps) {
         {study.tags.length > 0 && (
           <ul className="mt-5 flex flex-wrap gap-2">
             {study.tags.slice(0, 3).map((tag) => (
-              <li key={tag} className="pill">
+              <li
+                key={tag}
+                className="pill font-medium"
+                style={{
+                  color,
+                  backgroundColor: accentSoft,
+                  borderColor: `${accentMuted}99`,
+                }}
+              >
                 {tag}
               </li>
             ))}
