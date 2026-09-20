@@ -67,7 +67,7 @@ export const airportTravelExperience: CaseStudy = {
       type: "phase",
       id: "phase-story",
       navLabel: "Story",
-      phase: "01 — The Story",
+      phase: "Phase 1 — The Story",
       title: "When the airport stops feeling predictable",
       description:
         "Airports are built around movement — check in, drop baggage, clear security, find the gate, board. For a traveller, the experience is rarely that linear.",
@@ -104,7 +104,7 @@ export const airportTravelExperience: CaseStudy = {
       type: "phase",
       id: "phase-problem",
       navLabel: "Problem",
-      phase: "02 — The Problem",
+      phase: "Phase 2 — The Problem",
       title: "The real problem is uncertainty",
       description:
         "Travellers can experience multiple problems simultaneously inside an airport. The design opportunity is to turn scattered information into an actionable next step.",
@@ -154,7 +154,7 @@ export const airportTravelExperience: CaseStudy = {
       type: "phase",
       id: "phase-persona",
       navLabel: "Persona",
-      phase: "03 — The Traveller",
+      phase: "Phase 3 — The Traveller",
       title: "Shreyas Singh — when a routine trip turns uncertain",
       description:
         "A business analyst travelling Pune → Mumbai → Delhi. Mumbai is a layover. Then the first flight is delayed — and a predictable journey becomes an uncertain waiting period.",
@@ -173,7 +173,7 @@ export const airportTravelExperience: CaseStudy = {
       type: "phase",
       id: "phase-journey",
       navLabel: "Journey",
-      phase: "04 — User Journey",
+      phase: "Phase 4 — User Journey",
       title: "Mapping the airport from check-in to arrival",
       description:
         "The journey was mapped across five stages — each revealing where uncertainty peaks and where the product can intervene.",
@@ -229,7 +229,7 @@ export const airportTravelExperience: CaseStudy = {
       type: "phase",
       id: "phase-opportunities",
       navLabel: "Opportunities",
-      phase: "05 — Pain Points to Opportunities",
+      phase: "Phase 5 — Pain Points to Opportunities",
       title: "Turning traveller problems into product direction",
       description:
         "The brainstorming exercise translated pain points into opportunities — establishing a principle that the app should turn information into an actionable next step.",
@@ -255,7 +255,7 @@ export const airportTravelExperience: CaseStudy = {
       type: "phase",
       id: "phase-prioritisation",
       navLabel: "Prioritise",
-      phase: "06 — Feature Prioritisation",
+      phase: "Phase 6 — Feature Prioritisation",
       title: "Must-have capabilities vs future opportunities",
       description:
         "The feature list was divided to focus the MVP on the moments of highest uncertainty — boarding, navigation, and flight status.",
@@ -292,7 +292,7 @@ export const airportTravelExperience: CaseStudy = {
       type: "phase",
       id: "phase-ia",
       navLabel: "Architecture",
-      phase: "07 — Information Architecture",
+      phase: "Phase 7 — Information Architecture",
       title: "Organised around the journey, not isolated features",
       description:
         "The experience is structured around five primary areas — each answering a different question the traveller asks at a different moment.",
@@ -335,7 +335,7 @@ export const airportTravelExperience: CaseStudy = {
       type: "phase",
       id: "phase-process",
       navLabel: "Process",
-      phase: "08 — UX Process",
+      phase: "Phase 8 — UX Process",
       title: "From discovery to interface",
       description:
         "The process moved from understanding airport pain points through journey mapping, prioritisation, structure, and design.",
@@ -400,7 +400,7 @@ export const airportTravelExperience: CaseStudy = {
       type: "phase",
       id: "phase-decisions",
       navLabel: "Decisions",
-      phase: "09 — Key UX Decisions",
+      phase: "Phase 9 — Key UX Decisions",
       title: "Three interactions that define the product",
       description:
         "Each decision connects a traveller problem to a specific interface pattern — boarding progress, disruption awareness, and in-context amenity discovery.",
@@ -455,7 +455,7 @@ export const airportTravelExperience: CaseStudy = {
       type: "phase",
       id: "phase-ui",
       navLabel: "UI Design",
-      phase: "10 — High-Fidelity Design",
+      phase: "Phase 10 — High-Fidelity Design",
       title: "Screens grouped by traveller problem",
       description:
         "The final UI is organised by what the traveller needs — not by feature list — with each group tied to a specific moment of uncertainty.",
@@ -578,7 +578,7 @@ export const airportTravelExperience: CaseStudy = {
       type: "phase",
       id: "phase-validation",
       navLabel: "Validation",
-      phase: "11 — What I Would Validate Next",
+      phase: "Phase 11 — What I Would Validate Next",
       title: "Proposed usability testing — not measured results",
       description:
         "The source material does not include usability-test metrics or post-launch analytics. These are proposed validation scenarios and success signals for a next phase.",
@@ -634,7 +634,7 @@ export const airportTravelExperience: CaseStudy = {
       type: "phase",
       id: "phase-future",
       navLabel: "Future",
-      phase: "12 — Accessibility & Future Vision",
+      phase: "Phase 12 — Accessibility & Future Vision",
       title: "Beyond the MVP",
       description:
         "A production-ready version should account for diverse travellers and evolve from airport companion to travel continuity platform.",

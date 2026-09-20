@@ -41,7 +41,11 @@ export function CaseStudyRenderer({ study }: CaseStudyRendererProps) {
       <CaseStudyHero study={study} />
       <GoalChallengeOutcome study={study} />
       <OutcomeMetrics study={study} />
-      <TimelineNav sections={study.sections} accent={study.theme.accent} />
+      <TimelineNav
+        sections={study.sections}
+        accent={study.theme.accent}
+        studySlug={study.slug}
+      />
 
       <div className="cs-page-content mx-auto max-w-[var(--cs-page)] px-6 pb-24 pt-8 md:px-10">
         {study.sections.map((section, index) => {
@@ -59,6 +63,7 @@ export function CaseStudyRenderer({ study }: CaseStudyRendererProps) {
               theme={study.theme}
               index={index}
               phaseIndex={phaseIndex}
+              studySlug={study.slug}
             />
           );
         })}

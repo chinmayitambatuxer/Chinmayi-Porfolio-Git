@@ -11,7 +11,10 @@ type TimelineItem = {
   pillLabel: string;
 };
 
-function getTimelineItems(sections: CaseStudySection[]): TimelineItem[] {
+function getTimelineItems(
+  sections: CaseStudySection[],
+  phaseLabelOptions?: { includePhaseWord?: boolean },
+): TimelineItem[] {
   let chapter = 0;
   const items: TimelineItem[] = [];
 
@@ -21,7 +24,7 @@ function getTimelineItems(sections: CaseStudySection[]): TimelineItem[] {
       items.push({
         id: section.id,
         index: chapter,
-        pillLabel: phasePillLabel(section.phase),
+        pillLabel: phasePillLabel(section.phase, phaseLabelOptions),
       });
     }
   }
@@ -38,10 +41,21 @@ function getPhaseScrollTop(id: string) {
 type TimelineNavProps = {
   sections: CaseStudySection[];
   accent: string;
+  studySlug?: string;
 };
 
-export function TimelineNav({ sections, accent }: TimelineNavProps) {
-  const items = useMemo(() => getTimelineItems(sections), [sections]);
+const SDOH_SLUG = "sdoh-health-platform";
+
+export function TimelineNav({ sections, accent, studySlug }: TimelineNavProps) {
+  const phaseLabelOptions = useMemo(
+    () =>
+      studySlug === SDOH_SLUG ? { includePhaseWord: false } : undefined,
+    [studySlug],
+  );
+  const items = useMemo(
+    () => getTimelineItems(sections, phaseLabelOptions),
+    [sections, phaseLabelOptions],
+  );
   const [activeId, setActiveId] = useState(items[0]?.id ?? "");
   const scrollRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);

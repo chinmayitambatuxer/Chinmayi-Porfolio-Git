@@ -53,6 +53,7 @@ type SectionRendererProps = {
   theme: CaseStudyTheme;
   index: number;
   phaseIndex?: number;
+  studySlug?: string;
 };
 
 function Prose({ children }: { children: React.ReactNode }) {
@@ -100,7 +101,12 @@ export function SectionRenderer({
   theme,
   index,
   phaseIndex,
+  studySlug,
 }: SectionRendererProps) {
+  const phaseLabelOptions =
+    studySlug === "sdoh-health-platform"
+      ? { includePhaseWord: false }
+      : undefined;
   const delay = (index % 4) * 0.04;
   const accent = theme.accent;
 
@@ -113,7 +119,7 @@ export function SectionRenderer({
         >
           <Reveal delay={delay}>
             <p className="cs-timeline-index text-ink-muted">
-              {phaseHeading(section.phase)}
+              {phaseHeading(section.phase, phaseLabelOptions)}
             </p>
             {section.title && (
               <h2 className="cs-chapter-title mt-6 max-w-3xl text-balance">

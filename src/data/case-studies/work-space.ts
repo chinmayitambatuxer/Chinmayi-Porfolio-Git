@@ -70,7 +70,7 @@ export const workSpace: CaseStudy = {
       type: "phase",
       id: "phase-context",
       navLabel: "Context",
-      phase: "01 — Context",
+      phase: "Phase 1 — Context",
       title: "When home stopped working as an office",
       description:
         "Offices closed overnight, and homes became workplaces they were never meant to be — full of interruptions, and short on the calm and connectivity that focused work needs.",
@@ -109,7 +109,7 @@ export const workSpace: CaseStudy = {
       type: "phase",
       id: "phase-discover",
       navLabel: "Discover",
-      phase: "02 — Discover",
+      phase: "Phase 2 — Discover",
       title: "Understanding what people actually needed",
       description:
         "Requirement gathering and a competitive review defined what a good workspace-booking experience had to get right.",
@@ -171,7 +171,7 @@ export const workSpace: CaseStudy = {
       type: "phase",
       id: "phase-define",
       navLabel: "Define",
-      phase: "03 — Define",
+      phase: "Phase 3 — Define",
       title: "From survey signals to a real person",
       description:
         "A short survey of around 20 people, then a persona to keep every decision grounded in a real situation.",
@@ -239,7 +239,7 @@ export const workSpace: CaseStudy = {
       type: "phase",
       id: "phase-ideate",
       navLabel: "Ideate",
-      phase: "04 — Ideate",
+      phase: "Phase 4 — Ideate",
       title: "Mapping the booking journey",
       description:
         "A task flow tested the path a user takes from opening the app to a confirmed booking — before any screens were designed.",
@@ -282,7 +282,7 @@ export const workSpace: CaseStudy = {
       type: "phase",
       id: "phase-design",
       navLabel: "Design",
-      phase: "05 — Design",
+      phase: "Phase 5 — Design",
       title: "From wireframes to final UI",
       description:
         "Low-fidelity wireframes established the structure of each screen before the final visual design brought it to life.",

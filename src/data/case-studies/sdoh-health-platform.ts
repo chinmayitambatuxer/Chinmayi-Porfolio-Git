@@ -67,7 +67,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-story",
       navLabel: "Story",
-      phase: "01 — The Story",
+      phase: "Phase 1 — The Story",
       title: "Why social context matters in clinical care",
       description:
         "A patient's health does not exist in isolation. Income, education, employment, food security, housing, and living conditions can all influence the circumstances around health.",
@@ -90,7 +90,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-problem",
       navLabel: "Problem",
-      phase: "02 — The Practitioner Problem",
+      phase: "Phase 2 — The Practitioner Problem",
       title: "This is a workflow problem, not a form problem",
       description:
         "Capturing social context is difficult when the person responsible for collecting it is already managing a high-volume healthcare workflow.",
@@ -121,7 +121,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-persona",
       navLabel: "Persona",
-      phase: "03 — Meet Jennifer",
+      phase: "Phase 3 — Meet Jennifer",
       title: "Designing around a nurse's real day",
       description:
         "Jennifer is the narrative anchor for every design decision — her workflow, not a feature list, defines what the product needs to do.",
@@ -162,7 +162,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-challenge",
       navLabel: "Challenge",
-      phase: "04 — Design Challenge",
+      phase: "Phase 4 — Design Challenge",
       title: "A simple workflow for complex information",
       description:
         "The design challenge centres on reducing fragmentation — making social-health capture feel like part of Jennifer's day, not an interruption to it.",
@@ -204,7 +204,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-process",
       navLabel: "Process",
-      phase: "05 — UX Process",
+      phase: "Phase 5 — UX Process",
       title: "Understand → Represent → Structure → Explore → Connect → Refine",
       description:
         "The project followed a design-sprint-oriented progression — from understanding the problem through persona, structure, wireframes, prototyping, and high-fidelity UI.",
@@ -239,7 +239,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-needs",
       navLabel: "Opportunities",
-      phase: "06 — Needs → Opportunities",
+      phase: "Phase 6 — Needs → Opportunities",
       title: "From Jennifer's needs to product logic",
       description:
         "Each need maps to a workflow problem, a UX opportunity, and a feature direction — creating a clear thread from persona to interface.",
@@ -267,7 +267,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-ia",
       navLabel: "Architecture",
-      phase: "07 — Information Architecture",
+      phase: "Phase 7 — Information Architecture",
       title: "Practitioner · Admin · Super Admin",
       description:
         "Three roles structure the product — with the practitioner workflow immediately accessible and administrative responsibilities kept separate.",
@@ -331,7 +331,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-journey",
       navLabel: "Journey",
-      phase: "08 — Core Practitioner Journey",
+      phase: "Phase 8 — Core Practitioner Journey",
       title: "Sign in → Workload → Patient → Assessment → Review → Report",
       description:
         "The practitioner flow answers four questions Jennifer asks throughout her day — who, what, what do I have, and what needs attention.",
@@ -362,7 +362,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-story-layers",
       navLabel: "Product Story",
-      phase: "09 — Capture → Organise → Communicate",
+      phase: "Phase 9 — Capture → Organise → Communicate",
       title: "Three layers beyond the form",
       description:
         "The product story moves from collecting social-health context to structuring it for reuse to sharing it with clinical teams.",
@@ -397,7 +397,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-wireframes",
       navLabel: "Wireframes",
-      phase: "10 — Wireframes",
+      phase: "Phase 10 — Wireframes",
       title: "Structure before visual refinement",
       description:
         "Wireframes tested whether Jennifer could find patients, start assessments, track incomplete work, and move information toward reporting — before investing in visual polish.",
@@ -501,7 +501,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-decisions",
       navLabel: "Decisions",
-      phase: "11 — Key UX Decisions",
+      phase: "Phase 11 — Key UX Decisions",
       title: "Five decisions that shape the workflow",
       description:
         "Each decision connects a practitioner friction to a specific design response — framed as expected value, not measured outcomes.",
@@ -657,7 +657,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-ui",
       navLabel: "UI Design",
-      phase: "12 — High-Fidelity Design",
+      phase: "Phase 12 — High-Fidelity Design",
       title: "Screens grouped by what Jennifer is trying to do",
       description:
         "The final UI is organised by user task — not by feature list — with each group tied to a specific moment in the practitioner workflow.",
@@ -882,7 +882,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-responsive",
       navLabel: "Responsive",
-      phase: "13 — Responsive Experience",
+      phase: "Phase 13 — Responsive Experience",
       title: "Same workflow, different context",
       description:
         "Jennifer may move between hospital, clinic, and home — using mobile, desktop, and tablet across her day.",
@@ -905,7 +905,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-accessibility",
       navLabel: "Accessibility",
-      phase: "14 — Accessibility & Sensitive Information",
+      phase: "Phase 14 — Accessibility & Sensitive Information",
       title: "Design considerations for healthcare context",
       description:
         "Because SDOH information can concern personal circumstances, privacy and appropriate access should be treated as first-class UX considerations.",
@@ -931,7 +931,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-validation",
       navLabel: "Validation",
-      phase: "15 — What I Would Validate Next",
+      phase: "Phase 15 — What I Would Validate Next",
       title: "Proposed usability testing — not measured results",
       description:
         "The source material does not include usability-test metrics or clinical outcomes. These are proposed validation scenarios for a next phase.",
@@ -991,7 +991,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-future",
       navLabel: "Future",
-      phase: "16 — Future Opportunities",
+      phase: "Phase 16 — Future Opportunities",
       title: "Beyond the initial workflow",
       description:
         "These are future directions to explore — not features confirmed as implemented in the current design.",
@@ -1027,7 +1027,7 @@ export const sdohHealthPlatform: CaseStudy = {
       type: "phase",
       id: "phase-reflection",
       navLabel: "Reflection",
-      phase: "17 — Reflection",
+      phase: "Phase 17 — Reflection",
       title: "Making information manageable enough to be useful",
       description:
         "The most important lesson: the difficult part is not collecting more information — it is making information manageable enough to be useful.",

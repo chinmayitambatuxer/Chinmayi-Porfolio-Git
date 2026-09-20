@@ -70,7 +70,7 @@ export const inVehicleExperience: CaseStudy = {
       type: "phase",
       id: "phase-challenge",
       navLabel: "Challenge",
-      phase: "01 — The Challenge",
+      phase: "Phase 1 — The Challenge",
       title: "When the battery gets low, every decision matters",
       description:
         "Electric vehicles change the relationship between driving and energy. As the battery drops, the driver has to decide — conserve, continue, or charge — often while already running late and moving at speed.",
@@ -99,7 +99,7 @@ export const inVehicleExperience: CaseStudy = {
       type: "phase",
       id: "phase-problem",
       navLabel: "Problem",
-      phase: "02 — Understanding the Problem",
+      phase: "Phase 2 — Understanding the Problem",
       title: "Low battery is not simply a percentage",
       description:
         "A battery number on its own doesn't tell a driver what the situation means. Before sketching a screen, I mapped what a low state of charge actually changes across the vehicle.",
@@ -152,7 +152,7 @@ export const inVehicleExperience: CaseStudy = {
       type: "phase",
       id: "phase-research",
       navLabel: "Research",
-      phase: "03 — Research & Benchmarking",
+      phase: "Phase 3 — Research & Benchmarking",
       title: "Learning from five EV brands",
       description:
         "A competitive review looked at how existing EVs communicate low-battery and efficiency modes — naming, thresholds, and how many times they alert the driver.",
@@ -292,7 +292,7 @@ export const inVehicleExperience: CaseStudy = {
       type: "phase",
       id: "phase-user",
       navLabel: "The User",
-      phase: "04 — Defining the User",
+      phase: "Phase 4 — Defining the User",
       title: "A driver who is already under pressure",
       description:
         "A realistic commute scenario grounded every decision in the pressure of a real morning — not an idealised, unhurried driver.",
@@ -328,7 +328,7 @@ export const inVehicleExperience: CaseStudy = {
       type: "phase",
       id: "phase-reframe",
       navLabel: "Reframing",
-      phase: "05 — Reframing the Problem",
+      phase: "Phase 5 — Reframing the Problem",
       title: "From activating a feature to supporting a decision",
       description:
         "The brief could be read as \u201cbuild a way to turn on low-battery mode.\u201d The persona pushed it somewhere more useful.",
@@ -367,7 +367,7 @@ export const inVehicleExperience: CaseStudy = {
       type: "phase",
       id: "phase-ideation",
       navLabel: "Ideation",
-      phase: "06 — Ideation",
+      phase: "Phase 6 — Ideation",
       title: "Designing for the driver's next decision",
       description:
         "Several interaction directions were explored, each trading off speed of access against how much the driver has to understand.",
@@ -420,7 +420,7 @@ export const inVehicleExperience: CaseStudy = {
       type: "phase",
       id: "phase-alerts",
       navLabel: "Alert Strategy",
-      phase: "07 — Alert Strategy & Architecture",
+      phase: "Phase 7 — Alert Strategy & Architecture",
       title: "Escalate information, not interaction",
       description:
         "The concept explores multiple battery states so the driver gets an appropriate level of information as the situation becomes more critical — while the interaction stays short.",
@@ -474,7 +474,7 @@ export const inVehicleExperience: CaseStudy = {
       type: "phase",
       id: "phase-wireframes",
       navLabel: "Wireframing",
-      phase: "08 — Wireframing",
+      phase: "Phase 8 — Wireframing",
       title: "Testing the sequence before the visuals",
       description:
         "Low-fidelity frames were used to test the flow — normal driving \u2192 low battery \u2192 recommendation \u2192 activation \u2192 confirmation \u2192 power-saving dashboard — before investing in visual design.",
@@ -536,7 +536,7 @@ export const inVehicleExperience: CaseStudy = {
       type: "phase",
       id: "phase-ui",
       navLabel: "Final UI",
-      phase: "09 — Final UI",
+      phase: "Phase 9 — Final UI",
       title: "A low-distraction visual hierarchy",
       description:
         "The final UI builds on the existing EV infotainment environment rather than introducing a separate experience — keeping the driver's most important decision visually dominant.",
@@ -647,7 +647,7 @@ export const inVehicleExperience: CaseStudy = {
       type: "phase",
       id: "phase-safety",
       navLabel: "Safety",
-      phase: "10 — Safety Considerations",
+      phase: "Phase 10 — Safety Considerations",
       title: "Safety was a design constraint, not a checklist",
       description:
         "Because the interaction happens while driving, the design worked to minimise interaction steps, reading time, text density, decision complexity, and the need for precise touch.",
@@ -701,7 +701,7 @@ export const inVehicleExperience: CaseStudy = {
       type: "phase",
       id: "phase-outcome",
       navLabel: "Outcome",
-      phase: "11 — Outcome & Next Steps",
+      phase: "Phase 11 — Outcome & Next Steps",
       title: "From warning to assistance",
       description:
         "The concept turns a potentially stressful low-battery situation into a guided sequence — and sets up what to validate next.",
