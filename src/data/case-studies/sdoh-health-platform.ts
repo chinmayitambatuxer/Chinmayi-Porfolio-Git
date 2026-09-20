@@ -215,7 +215,7 @@ export const sdohHealthPlatform: CaseStudy = {
       title: "Design process overview",
       caption:
         "From user research and persona through information architecture, wireframes, prototyping, and high-fidelity design — each stage builds on the last.",
-      src: img("design-process.png"),
+      artifact: "sdoh-design-process",
       alt: "SDOH Health design process — User Research, Persona, Information Architecture, Wireframes, Prototyping",
       layout: "contained",
     },
@@ -446,7 +446,7 @@ export const sdohHealthPlatform: CaseStudy = {
           height: 574,
         },
         {
-          src: img("wf-add-patient.png"),
+          src: img("wf-add-patient-wireframe.png"),
           alt: "Add new patient wireframe",
           caption: "Add new patient",
           width: 1022,
@@ -484,8 +484,8 @@ export const sdohHealthPlatform: CaseStudy = {
           src: img("wf-reminders.png"),
           alt: "Reminders settings for incomplete surveys",
           caption: "Reminders",
-          width: 1024,
-          height: 589,
+          width: 1022,
+          height: 586,
         },
         {
           src: img("wf-profile.png"),
@@ -534,8 +534,8 @@ export const sdohHealthPlatform: CaseStudy = {
           src: img("wf-add-patient.png"),
           alt: "Add new patient wireframe intake form",
           caption: "Add patient — structured intake before the visit",
-          width: 1022,
-          height: 934,
+          width: 1024,
+          height: 899,
         },
       ],
     },
@@ -590,7 +590,7 @@ export const sdohHealthPlatform: CaseStudy = {
           height: 575,
         },
         {
-          src: img("wf-reminders.png"),
+          src: img("reminders-settings.png"),
           alt: "Reminders settings for incomplete surveys",
           caption: "Reminders — stay ahead of scheduled form sessions",
           width: 1024,
@@ -1009,10 +1009,6 @@ export const sdohHealthPlatform: CaseStudy = {
           description: "Make previous SDOH assessments easier to review over time.",
         },
         {
-          title: "Trend visibility",
-          description: "Help practitioners understand how social circumstances change.",
-        },
-        {
           title: "Referral support",
           description: "Connect identified needs with relevant community services.",
         },
@@ -1023,10 +1019,6 @@ export const sdohHealthPlatform: CaseStudy = {
         {
           title: "Follow-up support",
           description: "Remind practitioners about incomplete assessments or scheduled interactions.",
-        },
-        {
-          title: "Collaboration",
-          description: "Explore how information moves between practitioner, administrative, and clinical stakeholders.",
         },
       ],
     },

@@ -92,6 +92,7 @@ export type CaseStudySection =
         | "airport-persona"
         | "airport-journey"
         | "sdoh-persona"
+        | "sdoh-design-process"
         | "sierra-journey"
         | "sierra-dependency"
         | "sierra-design-process"

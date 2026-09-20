@@ -30,6 +30,7 @@ import { AirportJourneyMap } from "./AirportJourneyMap";
 import { SierraJourneyMap } from "./SierraJourneyMap";
 import { SierraDependencyMap } from "./SierraDependencyMap";
 import { SierraDesignProcess } from "./SierraDesignProcess";
+import { SdohDesignProcessOverview } from "./SdohDesignProcessOverview";
 import { SierraSystemArchitecture } from "./SierraSystemArchitecture";
 import { SierraMatrices } from "./SierraMatrices";
 import {
@@ -227,6 +228,8 @@ export function SectionRenderer({
           <SierraInteractionFlows theme={theme} />
         ) : section.artifact === "sdoh-persona" ? (
           <SdohPersonaCard theme={theme} />
+        ) : section.artifact === "sdoh-design-process" ? (
+          <SdohDesignProcessOverview theme={theme} />
         ) : section.artifact === "work-space-task-flow" ? (
           <WorkSpaceTaskFlow theme={theme} />
         ) : null;
